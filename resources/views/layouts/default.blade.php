@@ -14,7 +14,7 @@
     </nav>
 
     <div class="container text-center">
-       content
+        @yield('content')
     </div>
 <!-- End Custom template -->
 </div>
