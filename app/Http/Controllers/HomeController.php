@@ -8,6 +8,6 @@ class HomeController extends Controller
 {
     public function index(Request $request)
     {
-        dd('testing');
+        return view('layouts.default');
     }
 }
