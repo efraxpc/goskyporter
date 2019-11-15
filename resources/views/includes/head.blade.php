@@ -3,6 +3,17 @@
     <span class="navbar-toggler-icon"></span>
 </button>
 
+<div class="dropdown">
+    <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Information to fill
+    </a>
+
+    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+        <a class="dropdown-item" href="{{ route('airlines.index') }}">Airlines</a>
+        <a class="dropdown-item" href="{{ route('airports.index') }}">Airports</a>
+    </div>
+</div>
+
 <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <ul class="navbar-nav ml-auto">
         <li class="nav-item dropdown">
