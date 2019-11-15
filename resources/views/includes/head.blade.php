@@ -12,6 +12,7 @@
         <a class="dropdown-item" href="{{ route('airlines.index') }}">Airlines</a>
         <a class="dropdown-item" href="{{ route('airports.index') }}">Airports</a>
         <a class="dropdown-item" href="{{ route('visastatus.index') }}">Visa Status</a>
+        <a class="dropdown-item" href="{{ route('bookingsources.index') }}">Booking Sources</a>
     </div>
 </div>
 
