@@ -47067,8 +47067,8 @@ footer {
 
 @font-face {
   font-family: 'themify';
-  src: url("{{ public_path('css/themify.svg') }}");
-  src: url("{{ public_path('css/themify.eot?#iefix-fvbane') }}") format("embedded-opentype"), url("{{ public_path('css/themify.woff') }}") format("woff"), url("{{ public_path('css/themify.ttf') }}") format("truetype"), url("{{ public_path('css/themify.svg') }}") format("svg");
+  src: url( '{{ public_path('css/themify.svg') }}');
+  src: url('{{ public_path('css/themify.eot?#iefix-fvbane') }}') format("embedded-opentype"), url('{{ public_path('css/themify.woff') }}') format("woff"), url(''{{ public_path('css/themify.ttf') }}') format("truetype"), url('{{ public_path('css/themify.svg') }}') format("svg");
   font-weight: normal;
   font-style: normal; }
 
