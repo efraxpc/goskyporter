@@ -47068,7 +47068,7 @@ footer {
 @font-face {
   font-family: 'themify';
   src: url("../public/static/fonts/icons/themify/themify.eot");
-  src: url("../public/static/fonts/icons/themify/themify.eot?#iefix-fvbane") format("embedded-opentype"), url("/static/fonts/icons/themify/themify.woff") format("woff"), url("/static/fonts/icons/themify/themify.ttf") format("truetype"), url("/static/fonts/icons/themify/themify.svg") format("svg");
+  src: url("../../static/fonts/icons/themify/themify.eot?#iefix-fvbane") format("embedded-opentype"), url("../../static/fonts/icons/themify/themify.woff") format("woff"), url("/static/fonts/icons/themify/themify.ttf") format("truetype"), url("/static/fonts/icons/themify/themify.svg") format("svg");
   font-weight: normal;
   font-style: normal; }
 
