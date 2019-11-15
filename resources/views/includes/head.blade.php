@@ -1,4 +1,4 @@
-<a class="navbar-brand" href="#">Animated Dropdown</a>
+<a class="navbar-brand" href="#">Logo</a>
 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
 </button>
@@ -11,6 +11,7 @@
     <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
         <a class="dropdown-item" href="{{ route('airlines.index') }}">Airlines</a>
         <a class="dropdown-item" href="{{ route('airports.index') }}">Airports</a>
+        <a class="dropdown-item" href="{{ route('visastatus.index') }}">Visa Status</a>
     </div>
 </div>
 

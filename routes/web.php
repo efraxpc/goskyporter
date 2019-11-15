@@ -19,3 +19,4 @@ Route::get('/home', 'HomeController@index');
 
 Route::resource('airlines', 'AirlineController');
 Route::resource('airports', 'AirportController');
+Route::resource('visastatus', 'VisaStatusController');
