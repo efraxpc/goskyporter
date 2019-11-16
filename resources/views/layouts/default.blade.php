@@ -149,7 +149,7 @@
                             <a class='sidebar-link' href="{{ route('airlines.index') }}"><i class="fas fa-plane"></i> Airlines</a>
                         </li>
                         <li>
-                            <a class='sidebar-link' href="{{ route('airports.index') }}"><i class="fas fa-plane-arrival"></i> Airports</a>
+                            <a class='sidebar-link' href="{{ route('airports.index') }}"><i class="fas fa-building"></i> Airports</a>
                         </li>
                         <li>
                             <a class='sidebar-link' href="{{ route('visastatus.index') }}"><i class="fas fa-passport"></i> Visa Status</a>
@@ -168,12 +168,12 @@
         <!-- ### $Topbar ### -->
         <div class="row">
             <div class="col-2">
-                <ul class="nav justify-content mobile_menu .d-md-none .d-lg-block .d-lg-none .d-xl-block" style="display: none">
+                <ul class="nav justify-content mobile_menu .d-none .d-lg-block .d-xl-none" style="display: none">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
                         <div class="dropdown-menu">
                             <a class='dropdown-item' href="{{ route('airlines.index') }}"><i class="fas fa-plane"></i> Airlines</a>
-                            <a class='dropdown-item' href="{{ route('airports.index') }}"><i class="fas fa-plane-arrival"></i> Airports</a>
+                            <a class='dropdown-item' href="{{ route('airports.index') }}"><i class="fas fa-building"></i> Airports</a>
                             <a class='dropdown-item' href="{{ route('visastatus.index') }}"><i class="fas fa-passport"></i> Visa Status</a>
                             <a class='dropdown-item' href="{{ route('bookingsources.index') }}"><i class="fas fa-book-open"></i> Booking Sources</a>
                         </div>

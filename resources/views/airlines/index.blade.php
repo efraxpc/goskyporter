@@ -2,6 +2,11 @@
 
 @section('content')
     <div class="row">
+        <div class="col-12">
+            <a href="{{ route('airlines.create')}}" class="btn btn-primary">New</a>
+        </div>
+    </div>
+    <div class="row">
         <div class="col-sm-12">
 
             @if(session()->get('success'))
@@ -10,10 +15,7 @@
                 </div>
             @endif
         </div>
-        <div>
-            <a style="margin: 19px;" href="{{ route('airlines.create')}}" class="btn btn-primary">New Airline</a>
-        </div>
-        <div class="col-sm-12">
+        <div class="col-8">
             <hr>
             <h3>Airlines</h3>
             <table class="table table-striped">

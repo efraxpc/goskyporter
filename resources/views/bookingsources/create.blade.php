@@ -2,8 +2,10 @@
 
 @section('content')
     <div class="row">
-        <div class="col-sm-8 offset-sm-2">
-            <h5 class="display-3">Add a Book Source</h5>
+        <div class="col-8">
+            <hr>
+            <h3>Add a Book Source</h3>
+            <hr>
             <div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
