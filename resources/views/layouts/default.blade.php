@@ -52,11 +52,6 @@
                   opacity: 0;
               }
         }
-        @media only screen and (max-width: 600px) {
-            .mobile_menu{
-                display: block;
-            }
-        }
     </style>
     <link href="{{ asset('css/1.css') }}" rel="stylesheet">
     <link href="{{ asset('css/2.css') }}" rel="stylesheet">
@@ -173,7 +168,7 @@
         <!-- ### $Topbar ### -->
         <div class="row">
             <div class="col-2">
-                <ul class="nav justify-content mobile_menu" style="display: none">
+                <ul class="nav justify-content mobile_menu d-md-none" style="display: none">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
                         <div class="dropdown-menu">
