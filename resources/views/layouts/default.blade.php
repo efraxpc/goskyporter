@@ -57,7 +57,7 @@
     <link href="{{ asset('css/2.css') }}" rel="stylesheet">
     <link href="{{ asset('css/3.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/4.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('static/fontawesome-free-5.11.2-web/css/all.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
     <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -149,7 +149,7 @@
                     <ul class="dropdown-menu">
                         <li>
 
-                            <a class='sidebar-link' href="{{ route('airlines.index') }}"> <i class="fas fa-plane"></i> Airlines</a>
+                            <a class='sidebar-link' href="{{ route('airlines.index') }}"><i class="fas fa-plane"></i> Airlines</a>
                         </li>
                         <li>
                             <a class='sidebar-link' href="{{ route('airports.index') }}"><i class="fas fa-plane-arrival"></i> Airports</a>
