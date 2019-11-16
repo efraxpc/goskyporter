@@ -168,37 +168,25 @@
         <!-- ### $Topbar ### -->
         <div class="row">
             <div class="col-2">
-                <div class="btn-group">
-                    <button type="button" class="btn btn-default dropdown-toggle"
-                            data-toggle="dropdown">
-                        Options <span class="caret"></span>
-                    </button>
-                    <ul class="dropdown-menu" role="menu">
-                        <li>
-                            <a class='sidebar-link' href="{{ route('airlines.index') }}"><i class="fas fa-plane"></i> Airlines</a>
-                        </li>
-                        <li>
-                            <a class='sidebar-link' href="{{ route('airports.index') }}"><i class="fas fa-plane-arrival"></i> Airports</a>
-                        </li>
-                        <li>
-                            <a class='sidebar-link' href="{{ route('visastatus.index') }}"><i class="fas fa-passport"></i> Visa Status</a>
-                        </li>
-                        <li>
-                            <a class='sidebar-link' href="{{ route('bookingsources.index') }}"><i class="fas fa-book-open"></i> Booking Sources</a>
-                        </li>
-                    </ul>
-                </div>
+                <ul class="nav justify-content">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
+                        <div class="dropdown-menu">
+                            <a class='dropdown-item' href="{{ route('airlines.index') }}"><i class="fas fa-plane"></i> Airlines</a>
+                            <a class='dropdown-item' href="{{ route('airports.index') }}"><i class="fas fa-plane-arrival"></i> Airports</a>
+                            <a class='dropdown-item' href="{{ route('visastatus.index') }}"><i class="fas fa-passport"></i> Visa Status</a>
+                            <a class='dropdown-item' href="{{ route('bookingsources.index') }}"><i class="fas fa-book-open"></i> Booking Sources</a>
+                        </div>
+                    </li>
+                </ul>
             </div>
             <div class="col-10">
                 <ul class="nav justify-content-end">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Profile</a>
                         <div class="dropdown-menu">
-                            <a class="dropdown-item" href="#">Action</a>
-                            <a class="dropdown-item" href="#">Another action</a>
-                            <a class="dropdown-item" href="#">Something else here</a>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Separated link</a>
+                            <a class="dropdown-item" href="#">Logout</a>
                         </div>
                     </li>
                 </ul>
