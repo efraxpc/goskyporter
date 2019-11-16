@@ -107,7 +107,7 @@
                             <div class="peers ai-c fxw-nw">
                                 <div class="peer">
                                     <div class="logo">
-                                        <img src="assets/static/images/logo.png" alt="">
+                                        <img src="{{ asset('static/images/Book-flights.png') }}" alt="" style="max-height: 56px;">
                                     </div>
                                 </div>
                                 <div class="peer peer-greed">
