@@ -13,7 +13,8 @@
             <a style="margin: 19px;" href="{{ route('bookingsources.create')}}" class="btn btn-primary">New Booking Source</a>
         </div>
         <div class="col-sm-12">
-            <h1 class="display-3">Booking sources</h1>
+            <hr>
+            <h3>Booking sources</h3>
             <table class="table table-striped">
                 <thead>
                 <tr>

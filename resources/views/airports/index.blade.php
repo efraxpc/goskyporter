@@ -14,7 +14,8 @@
             <a style="margin: 19px;" href="{{ route('airports.create')}}" class="btn btn-primary">New Airport</a>
         </div>
         <div class="col-sm-12">
-            <h1 class="display-3">Airports</h1>
+            <hr>
+            <h3>Airports</h3>
             <table class="table table-striped">
                 <thead>
                 <tr>

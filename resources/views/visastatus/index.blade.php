@@ -14,7 +14,8 @@
             <a style="margin: 19px;" href="{{ route('visastatus.create')}}" class="btn btn-primary">New Visa Status</a>
         </div>
         <div class="col-sm-12">
-            <h1 class="display-3">Visa Status</h1>
+            <hr>
+            <h3>Visa Status</h3>
             <table class="table table-striped">
                 <thead>
                 <tr>
