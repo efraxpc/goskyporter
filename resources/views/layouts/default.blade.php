@@ -168,7 +168,7 @@
         <!-- ### $Topbar ### -->
         <div class="row">
             <div class="col-2">
-                <ul class="nav justify-content mobile_menu d-md-none" style="display: none">
+                <ul class="nav justify-content mobile_menu .d-md-none .d-lg-block .d-lg-none .d-xl-block" style="display: none">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
                         <div class="dropdown-menu">
