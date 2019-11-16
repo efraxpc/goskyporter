@@ -16,7 +16,7 @@
         </div>
         <div>
         </div>
-        <div class="col-8">
+        <div class="col-12">
             <hr>
             <h3>Airports</h3>
             <table class="table table-striped">

@@ -2,7 +2,7 @@
 
 @section('content')
     <div class="row">
-        <div class="col-8">
+        <div class="col-12">
             <hr>
             <h3>Add a Book Source</h3>
             <hr>

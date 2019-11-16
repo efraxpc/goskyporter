@@ -14,7 +14,7 @@
                 </div>
             @endif
         </div>
-        <div class="col-8">
+        <div class="col-12">
             <hr>
             <h3>Booking sources</h3>
             <table class="table table-striped">
