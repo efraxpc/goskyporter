@@ -57,7 +57,7 @@
     <link href="{{ asset('css/2.css') }}" rel="stylesheet">
     <link href="{{ asset('css/3.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/4.min.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/font-awesome.css') }}" rel="stylesheet">
+    <link href="{{ asset('static/fontawesome-free-5.11.2-web/css/all.css') }}" rel="stylesheet">
     <script
         src="https://code.jquery.com/jquery-3.4.1.min.js"
         integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
@@ -141,21 +141,22 @@
                 <span class="icon-holder">
                   <i class="c-orange-500 ti-layout-list-thumb "></i>
                 </span>
-                        <span class="title">Info</span>
+                        <span class="title"><i class="fas fa-tasks"></i> Manage CRM</span>
                         <span class="arrow">
                   <i class="ti-angle-right"></i>
                 </span>
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a class='sidebar-link' href="{{ route('airlines.index') }}">Airlines</a>
+
+                            <a class='sidebar-link' href="{{ route('airlines.index') }}"> <i class="fas fa-plane"></i> Airlines</a>
                         </li>
                         <li>
-                            <a class='sidebar-link' href="{{ route('airports.index') }}">Airports</a>
+                            <a class='sidebar-link' href="{{ route('airports.index') }}"><i class="fas fa-plane-arrival"></i> Airports</a>
                         </li>
                         <li>
-                            <a class='sidebar-link' href="{{ route('visastatus.index') }}">Visa Status</a>
-                            <a class='sidebar-link' href="{{ route('bookingsources.index') }}">Booking Sources</a>
+                            <a class='sidebar-link' href="{{ route('visastatus.index') }}"><i class="fas fa-passport"></i> Visa Status</a>
+                            <a class='sidebar-link' href="{{ route('bookingsources.index') }}"><i class="fas fa-book-open"></i> Booking Sources</a>
                         </li>
                     </ul>
                 </li>

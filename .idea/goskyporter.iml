@@ -89,7 +89,6 @@
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module" module-name="cobra-paga-api" />
-    <orderEntry type="module" module-name="crm" />
     <orderEntry type="module" module-name="adminator" />
     <orderEntry type="module" module-name="test" />
   </component>
