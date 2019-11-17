@@ -18,7 +18,7 @@ class QueryController extends Controller
     {
         return view('queries.create_home');
     }
-    public function new()
+    public function create_with_customer()
     {
         $querystatuses = QueryStatus::all();
         $bookingsources = BookingSource::all();
@@ -28,7 +28,7 @@ class QueryController extends Controller
         $visastatuses = VisaStatus::all();
         $airlines = Airline::all();
 
-        return view('queries.create', compact('querystatuses',
+        return view('queries.create_without_customer', compact('querystatuses',
         'bookingsources',
         'bookingtypes',
         'querytypes',
