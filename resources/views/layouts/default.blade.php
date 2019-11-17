@@ -163,6 +163,9 @@
                         <li>
                             <a class='sidebar-link' href="{{ route('bookingtypes.index') }}"><i class="fas fa-bookmark"></i> Booking Type</a>
                         </li>
+                        <li>
+                            <a class='sidebar-link' href="{{ route('querystatuses.index') }}"><i class="fas fa-shield-alt"></i> Query Status</a>
+                        </li>
                     </ul>
                 </li>
             </ul>
