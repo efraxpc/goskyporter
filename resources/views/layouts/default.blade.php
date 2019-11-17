@@ -158,13 +158,13 @@
                             <a class='sidebar-link' href="{{ route('bookingsources.index') }}"><i class="fas fa-book-open"></i> Booking Sources</a>
                         </li>
                         <li>
-                            <a class='sidebar-link' href="{{ route('querytypes.index') }}"><i class="fas fa-route"></i> Query Type</a>
+                            <a class='sidebar-link' href="{{ route('querytypes.index') }}"><i class="fas fa-route"></i> Query Types</a>
                         </li>
                         <li>
-                            <a class='sidebar-link' href="{{ route('bookingtypes.index') }}"><i class="fas fa-bookmark"></i> Booking Type</a>
+                            <a class='sidebar-link' href="{{ route('bookingtypes.index') }}"><i class="fas fa-bookmark"></i> Booking Types</a>
                         </li>
                         <li>
-                            <a class='sidebar-link' href="{{ route('querystatuses.index') }}"><i class="fas fa-shield-alt"></i> Query Status</a>
+                            <a class='sidebar-link' href="{{ route('querystatuses.index') }}"><i class="fas fa-shield-alt"></i> Query Statuses</a>
                         </li>
                     </ul>
                 </li>
@@ -177,14 +177,20 @@
         <!-- ### $Topbar ### -->
         <div class="row">
             <div class="col-2">
+                <a class="btn btn-success" href="#" role="button href="{{ route('customer_create_home') }}"">Add Query</a>
+            </div>
+            <div class="col-2">
                 <ul class="nav justify-content mobile_menu d-sm-none">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Menu</a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage CRM</a>
                         <div class="dropdown-menu">
                             <a class='dropdown-item' href="{{ route('airlines.index') }}"><i class="fas fa-plane"></i> Airlines</a>
                             <a class='dropdown-item' href="{{ route('airports.index') }}"><i class="fas fa-building"></i> Airports</a>
                             <a class='dropdown-item' href="{{ route('visastatus.index') }}"><i class="fas fa-passport"></i> Visa Status</a>
                             <a class='dropdown-item' href="{{ route('bookingsources.index') }}"><i class="fas fa-book-open"></i> Booking Sources</a>
+                            <a class='dropdown-item' href="{{ route('querytypes.index') }}"><i class="fas fa-route"></i> Query Types</a>
+                            <a class='dropdown-item' href="{{ route('bookingtypes.index') }}"><i class="fas fa-route"></i> Booking Types</a>
+                            <a class='dropdown-item' href="{{ route('querystatuses.index') }}"><i class="fas fa-route"></i> Query Statuses</a>
                         </div>
                     </li>
                 </ul>
