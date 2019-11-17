@@ -182,7 +182,7 @@
             <div class="col-4" >
                 <ul class="nav justify-content mobile_menu d-sm-none">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage CRM</a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">CRM</a>
                         <div class="dropdown-menu">
                             <a class='dropdown-item' href="{{ route('airlines.index') }}"><i class="fas fa-plane"></i> Airlines</a>
                             <a class='dropdown-item' href="{{ route('airports.index') }}"><i class="fas fa-building"></i> Airports</a>
