@@ -20,3 +20,5 @@ Route::resource('bookingsources', 'BookingSourceController');
 Route::resource('querytypes', 'QueryTypeController');
 Route::resource('bookingtypes', 'BookingTypeController');
 Route::resource('querystatuses', 'QueryStatusController');
+Route::get('/customer/create', 'QueryController@create_home')->name('customer_create_home');;
+

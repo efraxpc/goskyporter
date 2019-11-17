@@ -127,19 +127,19 @@
             <!-- ### $Sidebar Menu ### -->
             <ul class="sidebar-menu scrollable pos-r">
                 <li class="nav-item mT-30 actived">
-                    <a class="sidebar-link" href="{{ route('airlines.index') }}">
+                    <a class="sidebar-link" href="{{ route('customer_create_home') }}">
                 <span class="icon-holder">
-                  <i class="c-blue-500 ti-home"></i>
+                  <i class="far fa-plus-square"></i>
                 </span>
-                        <span class="title">Airlines</span>
+                        <span class="title">New Query</span>
                     </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="dropdown-toggle click_info_icon" href="javascript:void(0);">
                 <span class="icon-holder">
-                  <i class="c-orange-500 ti-layout-list-thumb "></i>
+                  <i class="fas fa-tasks"></i>
                 </span>
-                        <span class="title"><i class="fas fa-tasks"></i> Manage CRM</span>
+                        <span class="title"> Manage CRM</span>
                         <span class="arrow">
                   <i class="ti-angle-right"></i>
                 </span>
