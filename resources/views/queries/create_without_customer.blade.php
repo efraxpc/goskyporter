@@ -135,7 +135,84 @@
                             </div>
                         </div>
                     </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5>Travel preference</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="origin">Origin:</label>
+                                        <select class="origin" name="origin" style="width: 100%">
+                                            <option value="">-- Select --</option>
+                                            @foreach($airports as $airport)
+                                                <option value="{{$airport->id}}">{{$airport->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="destination">Destination:</label>
+                                        <select class="destination" name="destination" style="width: 100%">
+                                            <option value="">-- Select --</option>
+                                            @foreach($airports as $airport)
+                                                <option value="{{$airport->id}}">{{$airport->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="departure_date">Departure date:</label>
+                                        <input type="date" class="form-control" name="departure_date"/>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="arrival_date">Arrival date:</label>
+                                        <input type="date" class="form-control" name="arrival_date"/>
+                                    </div>
+                                </div>
+                            </div>
 
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="row">
+                                <div class="col-12">
+                                    <h5>Passenger details</h5>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="passengerdetails">Passenger details</label>
+                                        <textarea class="form-control" id="passengerdetails" rows="3"></textarea>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="destination">Remarks:</label>
+                                        <select class="destination" name="destination" style="width: 100%">
+                                            <option value="">-- Select --</option>
+                                            @foreach($airports as $airport)
+                                                <option value="{{$airport->id}}">{{$airport->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-primary">Add</button>
                 </form>
             </div>
@@ -149,5 +226,7 @@
     $('.booking_source').select2();
     $('.query_type').select2();
     $('.booking_type').select2();
+    $('.origin').select2();
+    $('.destination').select2();
 @endsection
 
