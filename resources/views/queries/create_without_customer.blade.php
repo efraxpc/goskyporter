@@ -16,7 +16,7 @@
                         </ul>
                     </div><br />
                 @endif
-                <form method="post" action="{{ route('querystatuses.store') }}">
+                <form method="post" action="{{ route('save_query') }}">
                     @csrf
                     <div class="row">
                         <div class="col-12">
@@ -92,14 +92,14 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="query_date">Query date:</label>
-                                        <input type="date" class="form-control" name="name"/>
+                                        <input type="date" class="form-control" name="query_date"/>
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="query_status">Sources/Referals:</label>
+                                        <label for="booking_source">Sources/Referals:</label>
                                         <select class="booking_source" name="booking_source" style="width: 100%">
                                             <option value="">-- Select --</option>
                                             @foreach($bookingsources as $bookingsource)
@@ -202,12 +202,12 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="destination">Remarks:</label>
-                                        <select class="destination" name="destination" style="width: 100%">
-                                            <option value="">-- Select --</option>
-                                            @foreach($airports as $airport)
-                                                <option value="{{$airport->id}}">{{$airport->name}}</option>
-                                            @endforeach
-                                        </select>
+                                        <div class="field_wrapper">
+                                            <div>
+                                                <input type="text" class="form-control" name="remarks[]" value=""/>
+                                                <a href="javascript:void(0);" class="add_button" title="Add field"><i class="fas fa-plus-square" style="color:green"></i></a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -228,5 +228,28 @@
     $('.booking_type').select2();
     $('.origin').select2();
     $('.destination').select2();
+
+
+    var maxField = 10; //Input fields increment limitation
+    var addButton = $('.add_button'); //Add button selector
+    var wrapper = $('.field_wrapper'); //Input field wrapper
+    var fieldHTML = '<div><input type="text" class="form-control" name="remarks[]" value=""/><a href="javascript:void(0);" class="remove_button"><i class="fas fa-times" style="color:red"></i></a></div>'; //New input field html
+    var x = 1; //Initial field counter is 1
+
+    //Once add button is clicked
+    $(addButton).click(function(){
+    //Check maximum number of input fields
+    if(x < maxField){
+    x++; //Increment field counter
+    $(wrapper).append(fieldHTML); //Add field html
+    }
+    });
+
+    //Once remove button is clicked
+    $(wrapper).on('click', '.remove_button', function(e){
+    e.preventDefault();
+    $(this).parent('div').remove(); //Remove field html
+    x--; //Decrement field counter
+    });
 @endsection
 

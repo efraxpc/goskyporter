@@ -37,4 +37,27 @@ class QueryController extends Controller
         'airlines'
         ));
     }
+    public function save(Request $request)
+    {
+        $request->validate([
+            'first_name'=>'required',
+            'last_name'=>'required',
+            'us_phone_number'=>'required',
+            'us_alternate_phone_number'=>'required',
+            'indian_phone'=>'required',
+            'email'=>'required',
+            'query_status'=>'required',
+            'query_date'=>'required',
+            'booking_source'=>'required',
+            'query_type'=>'required',
+            'booking_type'=>'required',
+            'origin'=>'required',
+            'destination'=>'required',
+            'departure_date'=>'required',
+            'arrival_date'=>'required',
+            'passengerdetails'=>'required',
+            'remarks'=>'required',
+        ]);
+        return view('queries.create_home');
+    }
 }
