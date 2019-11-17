@@ -177,10 +177,10 @@
         <!-- ### $Topbar ### -->
         <div class="row">
             <div class="col-4 d-sm-none">
-                <a class="btn btn-success" role="button" href="{{ route('customer_create_home') }}"><i class="fas fa-plus"></i> Query</a>
+                <a class="btn btn-success centerX" role="button" href="{{ route('customer_create_home') }}"><i class="fas fa-plus"></i> Query</a>
             </div>
             <div class="col-4 d-sm-none">
-                <ul class="nav justify-content mobile_menu">
+                <ul class="nav justify-content mobile_menu centerX">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage CRM</a>
                         <div class="dropdown-menu">
@@ -196,7 +196,7 @@
                 </ul>
             </div>
             <div class="col-4">
-                <ul class="nav justify-content-end">
+                <ul class="nav justify-content-end centerX" >
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Profile</a>
                         <div class="dropdown-menu">
