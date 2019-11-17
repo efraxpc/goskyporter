@@ -179,7 +179,7 @@
             <div class="col-4 d-sm-none">
                 <a class="btn btn-success" role="button" href="{{ route('customer_create_home') }}"><i class="fas fa-plus"></i> Query</a>
             </div>
-            <div class="col-2 d-sm-none">
+            <div class="col-4 d-sm-none">
                 <ul class="nav justify-content mobile_menu">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage CRM</a>
@@ -195,7 +195,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-6">
+            <div class="col-4">
                 <ul class="nav justify-content-end">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Profile</a>
