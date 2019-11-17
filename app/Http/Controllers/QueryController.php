@@ -46,7 +46,7 @@ class QueryController extends Controller
             'us_alternate_phone_number'=>'required',
             'indian_phone'=>'required',
             'email'=>'required',
-            'query_status'=>'required',
+            'querystatus'=>'required',
             'query_date'=>'required',
             'booking_source'=>'required',
             'query_type'=>'required',
@@ -57,7 +57,29 @@ class QueryController extends Controller
             'arrival_date'=>'required',
             'passengerdetails'=>'required',
             'remarks'=>'required',
+            'bookingsource'=>'required',
         ]);
+
+        $airport = new Query([
+            'first_name' => $request->get('first_name'),
+            'last_name' => $request->get('last_name'),
+            'us_phone_number' => $request->get('us_phone_number'),
+            'us_alternate_phone_number' => $request->get('us_alternate_phone_number'),
+            'indian_phone' => $request->get('indian_phone'),
+            'email' => $request->get('email'),
+            'querystatus' => $request->get('querystatus'),
+            'query_date' => $request->get('query_date'),
+            'booking_source' => $request->get('booking_source'),
+            'query_type' => $request->get('query_type'),
+            'booking_type' => $request->get('booking_type'),
+            'origin' => $request->get('origin'),
+            'destination' => $request->get('destination'),
+            'departure_date' => $request->get('departure_date'),
+            'arrival_date' => $request->get('arrival_date'),
+            'passengerdetails' => $request->get('passengerdetails'),
+            'bookingsource' => $request->get('bookingsource'),
+        ]);
+        $airport->save();
         return view('queries.create_home');
     }
 }

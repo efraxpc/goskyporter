@@ -29,13 +29,13 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="first_name">Frist name:</label>
-                                        <input type="text" class="form-control" name="first_name"/>
+                                        <input type="text" class="form-control" name="first_name" value="{{ old('first_name') }}"/>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="last_name">Last name:</label>
-                                        <input type="text" class="form-control" name="name"/>
+                                        <input type="text" class="form-control" name="last_name" value="{{ old('last_name') }}"/>
                                     </div>
                                 </div>
                             </div>
@@ -43,13 +43,13 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="us_phone_number">US phone number:</label>
-                                        <input type="text" class="form-control" name="us_phone_number"/>
+                                        <input type="text" class="form-control" name="us_phone_number" value="{{ old('us_phone_number') }}"/>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="us_alternate_phone_number">US alternate phone number:</label>
-                                        <input type="text" class="form-control" name="us_alternate_phone_number"/>
+                                        <input type="text" class="form-control" name="us_alternate_phone_number" value="{{ old('us_alternate_phone_number') }}"/>
                                     </div>
                                 </div>
                             </div>
@@ -57,13 +57,13 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="indian_phone">Indian phone:</label>
-                                        <input type="text" class="form-control" name="indian_phone"/>
+                                        <input type="text" class="form-control" name="indian_phone" value="{{ old('indian_phone') }}"/>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="email">Email:</label>
-                                        <input type="text" class="form-control" name="email"/>
+                                        <input type="text" class="form-control" name="email" value="{{ old('email') }}"/>
                                     </div>
                                 </div>
                             </div>
@@ -80,8 +80,8 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="query_status">Query status:</label>
-                                        <select class="query_status" name="query_status" style="width: 100%">
+                                        <label for="querystatus">Query status:</label>
+                                        <select class="query_status" name="querystatus" style="width: 100%" value="{{ old('querystatus') }}">
                                             <option value="">-- Select --</option>
                                             @foreach($querystatuses as $querystatus)
                                                 <option value="{{$querystatus->id}}">{{$querystatus->name}}</option>
@@ -92,15 +92,15 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="query_date">Query date:</label>
-                                        <input type="date" class="form-control" name="query_date"/>
+                                        <input type="date" class="form-control" name="query_date"/ value="{{ old('query_date') }}">
                                     </div>
                                 </div>
                             </div>
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="booking_source">Sources/Referals:</label>
-                                        <select class="booking_source" name="booking_source" style="width: 100%">
+                                        <label for="bookingsource">Sources/Referals:</label>
+                                        <select class="booking_source" name="bookingsource" style="width: 100%" value="{{ old('bookingsource') }}">
                                             <option value="">-- Select --</option>
                                             @foreach($bookingsources as $bookingsource)
                                                 <option value="{{$bookingsource->id}}">{{$bookingsource->name}}</option>
@@ -111,7 +111,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="query_type">Query type:</label>
-                                        <select class="query_type" name="query_type" style="width: 100%">
+                                        <select class="query_type" name="query_type" style="width: 100%" value="{{ old('query_type') }}">
                                             <option value="">-- Select --</option>
                                             @foreach($querytypes as $querytype)
                                                 <option value="{{$querytype->id}}">{{$querytype->name}}</option>
@@ -124,7 +124,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="booking_type">Booking type:</label>
-                                        <select class="booking_type" name="booking_type" style="width: 100%">
+                                        <select class="booking_type" name="booking_type" style="width: 100%" value="{{ old('booking_type') }}">
                                             <option value="">-- Select --</option>
                                             @foreach($bookingtypes as $bookingtype)
                                                 <option value="{{$bookingtype->id}}">{{$bookingtype->name}}</option>
@@ -147,7 +147,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="origin">Origin:</label>
-                                        <select class="origin" name="origin" style="width: 100%">
+                                        <select class="origin" name="origin" style="width: 100%" value="{{ old('origin') }}">
                                             <option value="">-- Select --</option>
                                             @foreach($airports as $airport)
                                                 <option value="{{$airport->id}}">{{$airport->name}}</option>
@@ -158,7 +158,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="destination">Destination:</label>
-                                        <select class="destination" name="destination" style="width: 100%">
+                                        <select class="destination" name="destination" style="width: 100%" value="{{ old('destination') }}">
                                             <option value="">-- Select --</option>
                                             @foreach($airports as $airport)
                                                 <option value="{{$airport->id}}">{{$airport->name}}</option>
@@ -196,7 +196,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="passengerdetails">Passenger details</label>
-                                        <textarea class="form-control" id="passengerdetails" rows="3"></textarea>
+                                        <textarea class="form-control" id="passengerdetails" name="passengerdetails" rows="3"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-6">
