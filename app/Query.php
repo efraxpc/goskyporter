@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Query extends Model
 {
     protected $fillable = [
-        'querystatus',
+        'query_status',
         'bookingsource',
         'bookingtype',
         'querytype',
@@ -19,5 +19,7 @@ class Query extends Model
         'departure_date',
         'arrival_date',
         'passenger_details',
+        'airline',
+        'remarks',
     ];
 }

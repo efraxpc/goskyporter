@@ -80,8 +80,8 @@
                             <div class="row">
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="querystatus">Query status:</label>
-                                        <select class="query_status" name="querystatus" style="width: 100%" value="{{ old('querystatus') }}">
+                                        <label for="query_status">Query status:</label>
+                                        <select class="query_status" name="query_status" style="width: 100%" value="{{ old('query_status') }}">
                                             <option value="">-- Select --</option>
                                             @foreach($querystatuses as $querystatus)
                                                 <option value="{{$querystatus->id}}">{{$querystatus->name}}</option>
@@ -92,7 +92,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="query_date">Query date:</label>
-                                        <input type="date" class="form-control" name="query_date"/ value="{{ old('query_date') }}">
+                                        <input type="date" class="form-control" name="query_date" value="{{ old('query_date') }}">
                                     </div>
                                 </div>
                             </div>
@@ -181,6 +181,30 @@
                                     </div>
                                 </div>
                             </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="visa_status">Visa status:</label>
+                                        <select class="visa_status" name="visa_status" style="width: 100%" value="{{ old('visa_status') }}">
+                                            <option value="">-- Select --</option>
+                                            @foreach($visastatuses as $visastatus)
+                                                <option value="{{$visastatus->id}}">{{$visastatus->status}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="airline">Airline preference:</label>
+                                        <select class="airline" name="airline" style="width: 100%" value="{{ old('airline') }}">
+                                            <option value="">-- Select --</option>
+                                            @foreach($airlines as $airline)
+                                                <option value="{{$airline->id}}">{{$airline->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
                     </div>
@@ -228,6 +252,8 @@
     $('.booking_type').select2();
     $('.origin').select2();
     $('.destination').select2();
+    $('.visa_status').select2();
+    $('.airline').select2();
 
 
     var maxField = 10; //Input fields increment limitation

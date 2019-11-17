@@ -11,6 +11,7 @@ use App\QueryStatus;
 use App\QueryType;
 use App\VisaStatus;
 use Illuminate\Http\Request;
+use \stdClass;
 
 class QueryController extends Controller
 {
@@ -37,6 +38,20 @@ class QueryController extends Controller
         'airlines'
         ));
     }
+    function ToObject($Array) {
+
+        // Clreate new stdClass object
+        $object = new stdClass();
+
+        // Use loop to convert array into object
+        foreach ($Array as $key => $value) {
+            if (is_array($value)) {
+                $value = ToObject($value);
+            }
+            $object->$key = $value;
+        }
+        return $object;
+    }
     public function save(Request $request)
     {
         $request->validate([
@@ -46,9 +61,8 @@ class QueryController extends Controller
             'us_alternate_phone_number'=>'required',
             'indian_phone'=>'required',
             'email'=>'required',
-            'querystatus'=>'required',
+            'query_status'=>'required',
             'query_date'=>'required',
-            'booking_source'=>'required',
             'query_type'=>'required',
             'booking_type'=>'required',
             'origin'=>'required',
@@ -58,28 +72,37 @@ class QueryController extends Controller
             'passengerdetails'=>'required',
             'remarks'=>'required',
             'bookingsource'=>'required',
+            'visa_status'=>'required',
+            'airline'=>'required',
         ]);
+        foreach($request->get('remarks') as $key => $value){
+            $remarks_array[] = $value;
+        }
+        $convertedObj = $this->ToObject($remarks_array);
+        $serialized_object = serialize($convertedObj);
 
-        $airport = new Query([
+        $query = new Query([
             'first_name' => $request->get('first_name'),
             'last_name' => $request->get('last_name'),
             'us_phone_number' => $request->get('us_phone_number'),
             'us_alternate_phone_number' => $request->get('us_alternate_phone_number'),
             'indian_phone' => $request->get('indian_phone'),
             'email' => $request->get('email'),
-            'querystatus' => $request->get('querystatus'),
+            'query_status' => $request->get('query_status'),
             'query_date' => $request->get('query_date'),
-            'booking_source' => $request->get('booking_source'),
-            'query_type' => $request->get('query_type'),
-            'booking_type' => $request->get('booking_type'),
+            'querytype' => $request->get('query_type'),
+            'bookingtype' => $request->get('booking_type'),
             'origin' => $request->get('origin'),
             'destination' => $request->get('destination'),
             'departure_date' => $request->get('departure_date'),
             'arrival_date' => $request->get('arrival_date'),
-            'passengerdetails' => $request->get('passengerdetails'),
+            'passenger_details' => $request->get('passengerdetails'),
             'bookingsource' => $request->get('bookingsource'),
+            'visastatus' => $request->get('visa_status'),
+            'airline' => $request->get('airline'),
+            'remarks' => $serialized_object,
         ]);
-        $airport->save();
+        $query->save();
         return view('queries.create_home');
     }
 }
