@@ -82,7 +82,7 @@
                                     <div class="form-group">
                                         <label for="query_status">Query status:</label>
                                         <select class="query_status" name="query_status" style="width: 100%">
-                                            <option value="">--Select--</option>
+                                            <option value="">-- Select --</option>
                                             @foreach($querystatuses as $querystatus)
                                                 <option value="{{$querystatus->id}}">{{$querystatus->name}}</option>
                                             @endforeach
@@ -91,8 +91,45 @@
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
-                                        <label for="last_name">Last name:</label>
-                                        <input type="text" class="form-control" name="name"/>
+                                        <label for="query_date">Query date:</label>
+                                        <input type="date" class="form-control" name="name"/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="query_status">Sources/Referals:</label>
+                                        <select class="booking_source" name="booking_source" style="width: 100%">
+                                            <option value="">-- Select --</option>
+                                            @foreach($bookingsources as $bookingsource)
+                                                <option value="{{$bookingsource->id}}">{{$bookingsource->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="query_type">Query type:</label>
+                                        <select class="query_type" name="query_type" style="width: 100%">
+                                            <option value="">-- Select --</option>
+                                            @foreach($querytypes as $querytype)
+                                                <option value="{{$querytype->id}}">{{$querytype->name}}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-6">
+                                    <div class="form-group">
+                                        <label for="booking_type">Booking type:</label>
+                                        <select class="booking_type" name="booking_type" style="width: 100%">
+                                            <option value="">-- Select --</option>
+                                            @foreach($bookingtypes as $bookingtype)
+                                                <option value="{{$bookingtype->id}}">{{$bookingtype->name}}</option>
+                                            @endforeach
+                                        </select>
                                     </div>
                                 </div>
                             </div>
@@ -109,5 +146,8 @@
 
 @section('scripts')
     $('.query_status').select2();
+    $('.booking_source').select2();
+    $('.query_type').select2();
+    $('.booking_type').select2();
 @endsection
 

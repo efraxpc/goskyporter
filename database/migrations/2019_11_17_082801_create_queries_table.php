@@ -25,7 +25,8 @@ class CreateQueriesTable extends Migration
             $table->integer('bookingsource');
             $table->integer('bookingtype');
             $table->integer('querytype');
-            $table->integer('airport');
+            $table->integer('origin');
+            $table->integer('destination');
             $table->integer('visastatus');
             $table->integer('airline');
             $table->date('query_date');
