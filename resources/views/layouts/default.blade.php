@@ -176,8 +176,8 @@
     <div class="page-container">
         <!-- ### $Topbar ### -->
         <div class="row">
-            <div class="col-2">
-                <a class="btn btn-success" href="#" role="button href="{{ route('customer_create_home') }}"">Add Query</a>
+            <div class="col-4">
+                <a class="btn btn-success" role="button" href="{{ route('customer_create_home') }}">Add Query</a>
             </div>
             <div class="col-2">
                 <ul class="nav justify-content mobile_menu d-sm-none">
@@ -189,8 +189,8 @@
                             <a class='dropdown-item' href="{{ route('visastatus.index') }}"><i class="fas fa-passport"></i> Visa Status</a>
                             <a class='dropdown-item' href="{{ route('bookingsources.index') }}"><i class="fas fa-book-open"></i> Booking Sources</a>
                             <a class='dropdown-item' href="{{ route('querytypes.index') }}"><i class="fas fa-route"></i> Query Types</a>
-                            <a class='dropdown-item' href="{{ route('bookingtypes.index') }}"><i class="fas fa-route"></i> Booking Types</a>
-                            <a class='dropdown-item' href="{{ route('querystatuses.index') }}"><i class="fas fa-route"></i> Query Statuses</a>
+                            <a class='dropdown-item' href="{{ route('bookingtypes.index') }}"><i class="fas fa-bookmark"></i> Booking Types</a>
+                            <a class='dropdown-item' href="{{ route('querystatuses.index') }}"><i class="fas fa-shield-alt"></i> Query Statuses</a>
                         </div>
                     </li>
                 </ul>
