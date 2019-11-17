@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateAirlinesTable extends Migration
+class CreateQueryTypesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateAirlinesTable extends Migration
      */
     public function up()
     {
-        Schema::create('airlines', function (Blueprint $table) {
+        Schema::create('query_types', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->text('name');
             $table->timestamps();
@@ -27,6 +27,6 @@ class CreateAirlinesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('airlines');
+        Schema::dropIfExists('query_types');
     }
 }

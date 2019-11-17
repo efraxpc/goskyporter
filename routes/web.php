@@ -17,3 +17,5 @@ Route::resource('airlines', 'AirlineController');
 Route::resource('airports', 'AirportController');
 Route::resource('visastatus', 'VisaStatusController');
 Route::resource('bookingsources', 'BookingSourceController');
+Route::resource('querytypes', 'QueryTypeController');
+Route::resource('bookingtypes', 'BookingTypeController');

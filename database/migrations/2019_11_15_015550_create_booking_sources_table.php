@@ -15,7 +15,7 @@ class CreateBookingSourcesTable extends Migration
     {
         Schema::create('booking_sources', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('name');
+            $table->text('name');
             $table->timestamps();
         });
     }

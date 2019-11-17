@@ -157,6 +157,12 @@
                         <li>
                             <a class='sidebar-link' href="{{ route('bookingsources.index') }}"><i class="fas fa-book-open"></i> Booking Sources</a>
                         </li>
+                        <li>
+                            <a class='sidebar-link' href="{{ route('querytypes.index') }}"><i class="fas fa-route"></i> Query Type</a>
+                        </li>
+                        <li>
+                            <a class='sidebar-link' href="{{ route('bookingtypes.index') }}"><i class="fas fa-bookmark"></i> Booking Type</a>
+                        </li>
                     </ul>
                 </li>
             </ul>
