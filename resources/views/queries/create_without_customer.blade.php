@@ -16,7 +16,7 @@
                         </ul>
                     </div><br />
                 @endif
-                <form method="post" action="{{ route('save_query') }}">
+                <form method="post" action="{{ route('save_query_without_client') }}">
                     @csrf
                     <div class="row">
                         <div class="col-12">

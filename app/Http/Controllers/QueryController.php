@@ -6,6 +6,7 @@ use App\Airline;
 use App\Airport;
 use App\BookingSource;
 use App\BookingType;
+use App\Customer;
 use App\Query;
 use App\QueryStatus;
 use App\QueryType;
@@ -52,7 +53,7 @@ class QueryController extends Controller
         }
         return $object;
     }
-    public function save(Request $request)
+    public function save_without_client(Request $request)
     {
         $request->validate([
             'first_name'=>'required',
@@ -75,6 +76,7 @@ class QueryController extends Controller
             'visa_status'=>'required',
             'airline'=>'required',
         ]);
+
         foreach($request->get('remarks') as $key => $value){
             $remarks_array[] = $value;
         }
@@ -103,6 +105,17 @@ class QueryController extends Controller
             'remarks' => $serialized_object,
         ]);
         $query->save();
+
+        $customer = new Customer([
+            'first_name' => $request->get('first_name'),
+            'last_name' => $request->get('last_name'),
+            'us_phone_number' => $request->get('us_phone_number'),
+            'us_alternate_number' => $request->get('us_alternate_phone_number'),
+            'indian_number' => $request->get('indian_phone'),
+            'email' => $request->get('email'),
+        ]);
+        $customer->save();
+
         return view('queries.create_home');
     }
 }
