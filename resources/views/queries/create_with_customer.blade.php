@@ -3,9 +3,6 @@
 @section('content')
     <div class="row">
         <div class="col-12">
-            <hr>
-            <h3>Add new customer</h3>
-            <hr>
             <div>
                 @if ($errors->any())
                     <div class="alert alert-danger">
