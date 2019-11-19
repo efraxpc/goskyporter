@@ -17,6 +17,10 @@ use Yajra\Datatables\Datatables;
 
 class QueryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     public function getIndex()
     {
         if(request()->ajax()) {
@@ -26,14 +30,22 @@ class QueryController extends Controller
                 'customers.first_name',
                 'customers.last_name',
                 'queries.created_at',
+                't1.name as origin',
+                't1.data as origin_data',
+                't2.name as destination',
+                't2.data as destination_data',
+                'users.name as user_name',
             ])
                 ->join('query_statuses','query_statuses.id','=','queries.query_status')
                 ->join('customers','customers.id','=','queries.customer')
+                ->join('users','users.id','=','queries.user_loggedin')
+                ->join('airports as t1','t1.id','=','queries.origin')
+                ->join('airports as t2','t2.id','=','queries.destination')
                 ->orderBy('id')
                 ->get();
             return Datatables::of($queries)
                 ->addColumn('action', function ($query) {
-                    return '<a href="/backend/edit/reward/'.$query->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a href="/backend/delete/reward/'.$query->id.'" class="btn btn-xs btn-danger m-2"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
+                    return '<a href="/queries/edit/'.$query->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a href="/queries/delete/'.$query->id.'" class="btn btn-xs btn-danger m-2"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
                 })
                 ->make(true);
         }
@@ -93,6 +105,16 @@ class QueryController extends Controller
         $convertedObj = $this->ToObject($remarks_array);
         $serialized_object = serialize($convertedObj);
 
+        $customer = new Customer([
+            'first_name' => $request->get('first_name'),
+            'last_name' => $request->get('last_name'),
+            'us_phone_number' => $request->get('us_phone_number'),
+            'us_alternate_number' => $request->get('us_alternate_phone_number'),
+            'indian_number' => $request->get('indian_phone'),
+            'email' => $request->get('email'),
+        ]);
+        $customer->save();
+
         $query = new Query([
             'first_name' => $request->get('first_name'),
             'last_name' => $request->get('last_name'),
@@ -112,21 +134,13 @@ class QueryController extends Controller
             'bookingsource' => $request->get('bookingsource'),
             'visastatus' => $request->get('visa_status'),
             'airline' => $request->get('airline'),
+            'user_loggedin' => auth()->user()->id,
             'remarks' => $serialized_object,
+            'customer' => $customer->id,
         ]);
         $query->save();
 
-        $customer = new Customer([
-            'first_name' => $request->get('first_name'),
-            'last_name' => $request->get('last_name'),
-            'us_phone_number' => $request->get('us_phone_number'),
-            'us_alternate_number' => $request->get('us_alternate_phone_number'),
-            'indian_number' => $request->get('indian_phone'),
-            'email' => $request->get('email'),
-        ]);
-        $customer->save();
-
-        return view('queries.create_home');
+        return redirect('queries')->with('success', 'Query saved!');
     }
 
     function ToObject($Array) {
@@ -142,5 +156,13 @@ class QueryController extends Controller
             $object->$key = $value;
         }
         return $object;
+    }
+
+    public function destroy($id)
+    {
+        $query = Query::find($id);
+        $query->delete();
+
+        return redirect('/queries')->with('success', 'Query deleted!');
     }
 }

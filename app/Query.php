@@ -22,5 +22,6 @@ class Query extends Model
         'airline',
         'remarks',
         'customer',
+        'user_loggedin',
     ];
 }
