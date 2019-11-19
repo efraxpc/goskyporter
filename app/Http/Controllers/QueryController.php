@@ -55,7 +55,7 @@ class QueryController extends Controller
     {
         return view('queries.create_home');
     }
-    public function create_with_customer()
+    public function create_without_customer()
     {
         $querystatuses = QueryStatus::all();
         $bookingsources = BookingSource::all();
@@ -141,6 +141,38 @@ class QueryController extends Controller
         $query->save();
 
         return redirect('queries')->with('success', 'Query saved!');
+    }
+
+    public function create_with_customer_index()
+    {
+        return view('queries.create_with_customer_index', compact('querystatuses',
+            'bookingsources',
+            'bookingtypes',
+            'querytypes',
+            'airports',
+            'visastatuses',
+            'airlines'
+        ));
+    }
+
+    public function create_with_customer()
+    {
+        $querystatuses = QueryStatus::all();
+        $bookingsources = BookingSource::all();
+        $bookingtypes = BookingType::all();
+        $querytypes = QueryType::all();
+        $airports = Airport::all();
+        $visastatuses = VisaStatus::all();
+        $airlines = Airline::all();
+
+        return view('queries.create_with_customer', compact('querystatuses',
+            'bookingsources',
+            'bookingtypes',
+            'querytypes',
+            'airports',
+            'visastatuses',
+            'airlines'
+        ));
     }
 
     function ToObject($Array) {

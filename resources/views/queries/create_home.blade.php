@@ -4,7 +4,7 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-6">
-                <a href="{{ route('query_create_with_customer') }}">
+                <a href="{{ route('query_create_without_customer') }}">
                     <div class="card text-white bg-primary mb-3 centerX" style="max-width: 18rem;">
                         <div class="card-body">
                             <div class="row">
@@ -20,7 +20,7 @@
                 </a>
             </div>
             <div class="col-6">
-                <a href="{{ route('save_query_without_client') }}">
+                <a href="{{ route('query_create_with_customer') }}">
                     <div class="card text-white bg-success mb-3 centerX" style="max-width: 18rem;" >
                         <div class="card-body">
                             <div class="row">

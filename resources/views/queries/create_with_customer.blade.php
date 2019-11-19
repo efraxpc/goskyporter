@@ -22,58 +22,6 @@
                         <div class="col-12">
                             <div class="row">
                                 <div class="col-12">
-                                    <h5>Customer data</h5>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="first_name">Frist name:</label>
-                                        <input type="text" class="form-control" name="first_name" value="{{ old('first_name') }}"/>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="last_name">Last name:</label>
-                                        <input type="text" class="form-control" name="last_name" value="{{ old('last_name') }}"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="us_phone_number">US phone number:</label>
-                                        <input type="text" class="form-control" name="us_phone_number" value="{{ old('us_phone_number') }}"/>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="us_alternate_phone_number">US alternate phone number:</label>
-                                        <input type="text" class="form-control" name="us_alternate_phone_number" value="{{ old('us_alternate_phone_number') }}"/>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="row">
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="indian_phone">Indian phone:</label>
-                                        <input type="text" class="form-control" name="indian_phone" value="{{ old('indian_phone') }}"/>
-                                    </div>
-                                </div>
-                                <div class="col-6">
-                                    <div class="form-group">
-                                        <label for="email">Email:</label>
-                                        <input type="text" class="form-control" name="email" value="{{ old('email') }}"/>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <hr>
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="row">
-                                <div class="col-12">
                                     <h5>Query specification</h5>
                                 </div>
                             </div>
