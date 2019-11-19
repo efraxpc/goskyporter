@@ -8,8 +8,8 @@
                     <div class="card text-white bg-primary mb-3 centerX" style="max-width: 18rem;">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-3">
-                                    <i class="fas fa-user-tie fa-4x d-sm-none"></i>
+                                <div class="col-3 d-block d-sm-none">
+                                    <i class="fas fa-user-tie fa-4x "></i>
                                 </div>
                                 <div class="col-9">
                                    <h4 class="card-title"> <b>ADD NEW CUSTOMER</b></h4>
@@ -24,8 +24,8 @@
                     <div class="card text-white bg-success mb-3 centerX" style="max-width: 18rem;" >
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-3">
-                                    <i class="fas fa-user-tie fa-4x d-sm-none"></i>
+                                <div class="col-3 d-block d-sm-none">
+                                    <i class="fas fa-user-tie fa-4x  "></i>
                                 </div>
                                 <div class="col-9">
                                     <h4 class="card-title"> <b>VIEW EXISTING CUSTOMER</b></h4>
