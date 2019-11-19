@@ -31,7 +31,6 @@ class CreateQueriesTable extends Migration
             $table->date('departure_date');
             $table->date('arrival_date');
             $table->text('passenger_details');
-            $table->text('remarks');
             $table->timestamps();
         });
     }
