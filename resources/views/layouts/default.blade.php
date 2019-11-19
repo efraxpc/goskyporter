@@ -219,7 +219,7 @@
                         </div>
                     </li>
             </div>
-            <div class="col-4">
+            <div class="col-5">
                 <ul class="nav justify-content mobile_menu d-sm-none">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
