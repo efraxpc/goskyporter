@@ -33,12 +33,12 @@
                         <td>{{$user->name}}</td>
                         <td>{{$user->email}}</td>
                         <td>
-                            @if ($user->role === 2)
-                                Admin
-                            @elseif ($user->role === 3)
-                                Agent
-                            @else
+                            @if ($user->role === 1)
                                 Super Admin
+                            @elseif ($user->role === 2)
+                                Admin
+                            @else ($user->role === 3)
+                                Agent
                             @endif
                         </td>
                         <td>
