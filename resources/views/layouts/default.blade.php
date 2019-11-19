@@ -35,7 +35,9 @@
         }
 
         @-webkit-keyframes sk-scaleout {
-            0% { -webkit-transform: scale(0) }
+            0% {
+                -webkit-transform: scale(0)
+            }
             100% {
                 -webkit-transform: scale(1.0);
                 opacity: 0;
@@ -46,11 +48,12 @@
             0% {
                 -webkit-transform: scale(0);
                 transform: scale(0);
-            } 100% {
-                  -webkit-transform: scale(1.0);
-                  transform: scale(1.0);
-                  opacity: 0;
-              }
+            }
+            100% {
+                -webkit-transform: scale(1.0);
+                transform: scale(1.0);
+                opacity: 0;
+            }
         }
     </style>
     <link href="{{ asset('css/1.css') }}" rel="stylesheet">
@@ -58,8 +61,10 @@
     <link href="{{ asset('css/3.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/4.min.css') }}" rel="stylesheet">
     <link href="{{ asset('css/all.min.css') }}" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/css/select2.min.css" rel="stylesheet"/>
+    <link href="https://cdn.datatables.net/1.10.7/css/jquery.dataTables.min.css" rel="stylesheet"/>
 
 </head>
 <body class="app app w-100 p-0">
@@ -86,7 +91,7 @@
 <script>
     window.addEventListener('load', function load() {
         const loader = document.getElementById('loader');
-        setTimeout(function() {
+        setTimeout(function () {
             loader.classList.add('fadeOut');
         }, 300);
     });
@@ -106,7 +111,8 @@
                             <div class="peers ai-c fxw-nw">
                                 <div class="peer">
                                     <div class="logo">
-                                        <img src="{{ asset('static/images/Book-flights.png') }}" alt="" style="max-height: 56px;">
+                                        <img src="{{ asset('static/images/Book-flights.png') }}" alt=""
+                                             style="max-height: 56px;">
                                     </div>
                                 </div>
                                 <div class="peer peer-greed">
@@ -128,18 +134,26 @@
             <!-- ### $Sidebar Menu ### -->
             <ul class="sidebar-menu scrollable pos-r">
                 <li class="nav-item mT-30 actived">
-                    <a class="sidebar-link" href="{{ route('customer_create_home') }}">
-                <span class="icon-holder">
-                  <i class="far fa-plus-square"></i>
-                </span>
+                    <a class="sidebar-link" href="{{ route('query_create_home') }}">
+                        <span class="icon-holder">
+                          <i class="far fa-plus-square"></i>
+                        </span>
                         <span class="title">New Query</span>
+                    </a>
+                </li>
+                <li class="nav-item ">
+                    <a class="sidebar-link" href="{{ route('queries') }}">
+                        <span class="icon-holder">
+                          <i class="fas fa-tasks"></i>
+                        </span>
+                        <span class="title">Queries lists</span>
                     </a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="dropdown-toggle click_info_icon" href="javascript:void(0);">
-                <span class="icon-holder">
-                  <i class="fas fa-tasks"></i>
-                </span>
+                        <span class="icon-holder">
+                            <i class="fas fa-angle-double-down"></i>
+                        </span>
                         <span class="title"> Manage CRM</span>
                         <span class="arrow">
                   <i class="ti-angle-right"></i>
@@ -147,25 +161,32 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a class='sidebar-link' href="{{ route('airlines.index') }}"><i class="fas fa-plane"></i> Airlines</a>
+                            <a class='sidebar-link' href="{{ route('airlines.index') }}"><i class="fas fa-plane"></i>
+                                Airlines</a>
                         </li>
                         <li>
-                            <a class='sidebar-link' href="{{ route('airports.index') }}"><i class="fas fa-building"></i> Airports</a>
+                            <a class='sidebar-link' href="{{ route('airports.index') }}"><i class="fas fa-building"></i>
+                                Airports</a>
                         </li>
                         <li>
-                            <a class='sidebar-link' href="{{ route('visastatus.index') }}"><i class="fas fa-passport"></i> Visa Status</a>
+                            <a class='sidebar-link' href="{{ route('visastatus.index') }}"><i
+                                    class="fas fa-passport"></i> Visa Status</a>
                         </li>
                         <li>
-                            <a class='sidebar-link' href="{{ route('bookingsources.index') }}"><i class="fas fa-book-open"></i> Booking Sources</a>
+                            <a class='sidebar-link' href="{{ route('bookingsources.index') }}"><i
+                                    class="fas fa-book-open"></i> Booking Sources</a>
                         </li>
                         <li>
-                            <a class='sidebar-link' href="{{ route('querytypes.index') }}"><i class="fas fa-route"></i> Query Types</a>
+                            <a class='sidebar-link' href="{{ route('querytypes.index') }}"><i class="fas fa-route"></i>
+                                Query Types</a>
                         </li>
                         <li>
-                            <a class='sidebar-link' href="{{ route('bookingtypes.index') }}"><i class="fas fa-bookmark"></i> Booking Types</a>
+                            <a class='sidebar-link' href="{{ route('bookingtypes.index') }}"><i
+                                    class="fas fa-bookmark"></i> Booking Types</a>
                         </li>
                         <li>
-                            <a class='sidebar-link' href="{{ route('querystatuses.index') }}"><i class="fas fa-shield-alt"></i> Query Statuses</a>
+                            <a class='sidebar-link' href="{{ route('querystatuses.index') }}"><i
+                                    class="fas fa-shield-alt"></i> Query Statuses</a>
                         </li>
                     </ul>
                 </li>
@@ -177,29 +198,39 @@
     <div class="page-container">
         <!-- ### $Topbar ### -->
         <div class="row">
-            <div class="col-4" >
-                <a class="btn btn-success d-sm-none" role="button" href="{{ route('customer_create_home') }}"><i class="fas fa-plus"></i> Query</a>
+            <div class="col-4">
+                <a class="btn btn-success d-sm-none" role="button" href="{{ route('query_create_home') }}"><i
+                        class="fas fa-plus"></i> Query</a>
             </div>
-            <div class="col-4" >
+            <div class="col-4">
                 <ul class="nav justify-content mobile_menu d-sm-none">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Manage CRM</a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="true" aria-expanded="false">Manage CRM</a>
                         <div class="dropdown-menu">
-                            <a class='dropdown-item' href="{{ route('airlines.index') }}"><i class="fas fa-plane"></i> Airlines</a>
-                            <a class='dropdown-item' href="{{ route('airports.index') }}"><i class="fas fa-building"></i> Airports</a>
-                            <a class='dropdown-item' href="{{ route('visastatus.index') }}"><i class="fas fa-passport"></i> Visa Status</a>
-                            <a class='dropdown-item' href="{{ route('bookingsources.index') }}"><i class="fas fa-book-open"></i> Booking Sources</a>
-                            <a class='dropdown-item' href="{{ route('querytypes.index') }}"><i class="fas fa-route"></i> Query Types</a>
-                            <a class='dropdown-item' href="{{ route('bookingtypes.index') }}"><i class="fas fa-bookmark"></i> Booking Types</a>
-                            <a class='dropdown-item' href="{{ route('querystatuses.index') }}"><i class="fas fa-shield-alt"></i> Query Statuses</a>
+                            <a class='dropdown-item' href="{{ route('airlines.index') }}"><i class="fas fa-plane"></i>
+                                Airlines</a>
+                            <a class='dropdown-item' href="{{ route('airports.index') }}"><i
+                                    class="fas fa-building"></i> Airports</a>
+                            <a class='dropdown-item' href="{{ route('visastatus.index') }}"><i
+                                    class="fas fa-passport"></i> Visa Status</a>
+                            <a class='dropdown-item' href="{{ route('bookingsources.index') }}"><i
+                                    class="fas fa-book-open"></i> Booking Sources</a>
+                            <a class='dropdown-item' href="{{ route('querytypes.index') }}"><i class="fas fa-route"></i>
+                                Query Types</a>
+                            <a class='dropdown-item' href="{{ route('bookingtypes.index') }}"><i
+                                    class="fas fa-bookmark"></i> Booking Types</a>
+                            <a class='dropdown-item' href="{{ route('querystatuses.index') }}"><i
+                                    class="fas fa-shield-alt"></i> Query Statuses</a>
                         </div>
                     </li>
                 </ul>
             </div>
             <div class="col-4">
-                <ul class="nav justify-content-end" >
+                <ul class="nav justify-content-end">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Profile</a>
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="true" aria-expanded="false">Profile</a>
                         <div class="dropdown-menu">
                             <div class="dropdown-divider"></div>
                             <a class="dropdown-item" href="#">Logout</a>
@@ -222,29 +253,37 @@
 
         <!-- ### $App Screen Footer ### -->
         <footer class="bdT ta-c p-30 lh-0 fsz-sm c-grey-600">
-            <span>Copyright © 2019 Designed by <a href="https://colorlib.com" target='_blank' title="Colorlib">Colorlib</a>. All rights reserved.</span>
+            <span>Copyright © 2019 Designed by <a href="https://colorlib.com" target='_blank'
+                                                  title="Colorlib">Colorlib</a>. All rights reserved.</span>
         </footer>
     </div>
 </div>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
 <script src="https://cdn.jsdelivr.net/npm/select2@4.0.12/dist/js/select2.min.js"></script>
+<script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+<script type="text/javascript"
+        src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
 <script>
-    $( document ).ready(function() {
-        $( ".click_info_icon" ).click(function() {
+    $(document).ready(function () {
+        $(".click_info_icon").click(function () {
             var className = $(this).parent().attr('class')
 
-            if(className === 'nav-item dropdown')
-            {
+            if (className === 'nav-item dropdown') {
                 $(this).parent().removeClass().addClass('nav-item dropdown open')
-            }else
-            {
+            } else {
                 $(this).parent().removeClass().addClass('nav-item dropdown')
             }
         });
     });
-    @yield('scripts')
 </script>
+@yield('scripts')
+
 </body>
 </html>

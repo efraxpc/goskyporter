@@ -20,8 +20,12 @@ Route::resource('bookingsources', 'BookingSourceController');
 Route::resource('querytypes', 'QueryTypeController');
 Route::resource('bookingtypes', 'BookingTypeController');
 Route::resource('querystatuses', 'QueryStatusController');
-Route::get('/customer/create', 'QueryController@create_home')->name('customer_create_home');
-Route::get('/customer/create-with-customer', 'QueryController@create_with_customer')->name('customer_create_with_customer');
-Route::get('/customer/create-without-customer', 'QueryController@create_without_customer')->name('customer_create_without_customer');
-Route::post('/customer/save', 'QueryController@save_without_client')->name('save_query_without_client');
+Route::get('/query/create', 'QueryController@create_home')->name('query_create_home');
+Route::get('/query/create-with-customer', 'QueryController@create_with_customer')->name('query_create_with_customer');
+Route::get('/query/create-without-customer', 'QueryController@create_without_customer')->name('query_create_without_customer');
+Route::post('/query/save', 'QueryController@save_without_client')->name('save_query_without_client');
+
+Route::get('/queries', 'QueryController@getIndex')->name('queries');
+Route::get('/queries/data', 'QueryController@anyData');
+
 

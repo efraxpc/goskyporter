@@ -21,5 +21,6 @@ class Query extends Model
         'passenger_details',
         'airline',
         'remarks',
+        'customer',
     ];
 }

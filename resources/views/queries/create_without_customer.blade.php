@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <hr>
-            <h3>Create Query without customer</h3>
+            <h3>Add new customer</h3>
             <hr>
             <div>
                 @if ($errors->any())
@@ -246,36 +246,39 @@
 @endsection
 
 @section('scripts')
-    $('.query_status').select2();
-    $('.booking_source').select2();
-    $('.query_type').select2();
-    $('.booking_type').select2();
-    $('.origin').select2();
-    $('.destination').select2();
-    $('.visa_status').select2();
-    $('.airline').select2();
+    <script>
+        $('.query_status').select2();
+        $('.booking_source').select2();
+        $('.query_type').select2();
+        $('.booking_type').select2();
+        $('.origin').select2();
+        $('.destination').select2();
+        $('.visa_status').select2();
+        $('.airline').select2();
 
 
-    var maxField = 10; //Input fields increment limitation
-    var addButton = $('.add_button'); //Add button selector
-    var wrapper = $('.field_wrapper'); //Input field wrapper
-    var fieldHTML = '<div><input type="text" class="form-control" name="remarks[]" value=""/><a href="javascript:void(0);" class="remove_button"><i class="fas fa-times" style="color:red"></i></a></div>'; //New input field html
-    var x = 1; //Initial field counter is 1
+        var maxField = 10; //Input fields increment limitation
+        var addButton = $('.add_button'); //Add button selector
+        var wrapper = $('.field_wrapper'); //Input field wrapper
+        var fieldHTML = '<div><input type="text" class="form-control" name="remarks[]" value=""/><a href="javascript:void(0);" class="remove_button"><i class="fas fa-times" style="color:red"></i></a></div>'; //New input field html
+        var x = 1; //Initial field counter is 1
 
-    //Once add button is clicked
-    $(addButton).click(function(){
-    //Check maximum number of input fields
-    if(x < maxField){
-    x++; //Increment field counter
-    $(wrapper).append(fieldHTML); //Add field html
-    }
-    });
+        //Once add button is clicked
+        $(addButton).click(function(){
+            //Check maximum number of input fields
+            if(x < maxField){
+                x++; //Increment field counter
+                $(wrapper).append(fieldHTML); //Add field html
+            }
+        });
 
-    //Once remove button is clicked
-    $(wrapper).on('click', '.remove_button', function(e){
-    e.preventDefault();
-    $(this).parent('div').remove(); //Remove field html
-    x--; //Decrement field counter
-    });
+        //Once remove button is clicked
+        $(wrapper).on('click', '.remove_button', function(e){
+            e.preventDefault();
+            $(this).parent('div').remove(); //Remove field html
+            x--; //Decrement field counter
+        });
+    </script>
+
 @endsection
 

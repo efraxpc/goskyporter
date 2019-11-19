@@ -13,33 +13,44 @@
         <div class="col-12">
             <hr>
             <h3>Queries</h3>
-            <table class="table table-striped">
+            <table class="responsive nowrap table table-striped" id="queries-table" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                    <td>Name</td>
-                    <td colspan = 2>Actions</td>
+                    <td>ID</td>
+                    <td class="text-center desktop mobile tablet">Status</td>
+                    <td class="text-center desktop mobile tablet">Customer</td>
+                    <td>Actions</td>
                 </tr>
                 </thead>
-                <tbody>
-                @foreach($querystatuses as $querystatus)
-                    <tr>
-                        <td>{{$querystatus->name}}</td>
-                        <td>
-                            <a href="{{ route('querystatuses.edit',$querystatus->id)}}" class="btn btn-primary">Edit</a>
-                        </td>
-                        <td>
-                            <form action="{{ route('querystatuses.destroy', $querystatus->id)}}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger" type="submit">Delete</button>
-                            </form>
-                        </td>
-                    </tr>
-                @endforeach
-                </tbody>
             </table>
-            <div>
-            </div>
-            </div>
+
+        </div>
     </div>
 @endsection
+@section('scripts')
+    <script>
+        var SITEURL = '{{URL::to('')}}';
+        $('#queries-table').DataTable({
+            responsive: true,
+            processing: true,
+            serverSide: true,
+            index: SITEURL + "/queries/data",
+            columns: [
+                { data: 'id', name: 'id', "visible": false, "searchable": false },
+                { data: 'query_status', name: 'query_status' },
+                { data: 'first_name', name: 'first_name' },
+                { data: 'action', name: 'action', orderable: false, searchable: false }
+            ],
+            "columnDefs": [
+                {
+                    "targets": 2,
+                    "render": function (data, type, row, meta) {
+                        return row.first_name + ' ' + row.last_name
+                    }
+                },
+            ],
+            order: [[0, 'desc']]
+        });
+    </script>
+
+@stop

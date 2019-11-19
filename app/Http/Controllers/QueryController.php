@@ -13,9 +13,32 @@ use App\QueryType;
 use App\VisaStatus;
 use Illuminate\Http\Request;
 use \stdClass;
+use Yajra\Datatables\Datatables;
 
 class QueryController extends Controller
 {
+    public function getIndex()
+    {
+        if(request()->ajax()) {
+            $queries = Query::select([
+                'queries.id',
+                'query_statuses.name as query_status',
+                'customers.first_name',
+                'customers.last_name',
+                'queries.created_at',
+            ])
+                ->join('query_statuses','query_statuses.id','=','queries.query_status')
+                ->join('customers','customers.id','=','queries.customer')
+                ->orderBy('id')
+                ->get();
+            return Datatables::of($queries)
+                ->addColumn('action', function ($query) {
+                    return '<a href="/backend/edit/reward/'.$query->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a href="/backend/delete/reward/'.$query->id.'" class="btn btn-xs btn-danger m-2"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
+                })
+                ->make(true);
+        }
+        return view('queries.list');
+    }
     public function create_home()
     {
         return view('queries.create_home');
@@ -39,20 +62,7 @@ class QueryController extends Controller
         'airlines'
         ));
     }
-    function ToObject($Array) {
 
-        // Clreate new stdClass object
-        $object = new stdClass();
-
-        // Use loop to convert array into object
-        foreach ($Array as $key => $value) {
-            if (is_array($value)) {
-                $value = ToObject($value);
-            }
-            $object->$key = $value;
-        }
-        return $object;
-    }
     public function save_without_client(Request $request)
     {
         $request->validate([
@@ -117,5 +127,20 @@ class QueryController extends Controller
         $customer->save();
 
         return view('queries.create_home');
+    }
+
+    function ToObject($Array) {
+
+        // Clreate new stdClass object
+        $object = new stdClass();
+
+        // Use loop to convert array into object
+        foreach ($Array as $key => $value) {
+            if (is_array($value)) {
+                $value = ToObject($value);
+            }
+            $object->$key = $value;
+        }
+        return $object;
     }
 }

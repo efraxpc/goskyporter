@@ -4,19 +4,33 @@
     <div class="container-fluid">
         <div class="row">
             <div class="col-6">
-                <a href="{{ route('customer_create_with_customer') }}">
+                <a href="{{ route('query_create_with_customer') }}">
                     <div class="card text-white bg-primary mb-3 centerX" style="max-width: 18rem;">
                         <div class="card-body">
-                            <h5 class="card-title">Without Customer</h5>
+                            <div class="row">
+                                <div class="col-3">
+                                    <i class="fas fa-user-tie fa-4x "></i>
+                                </div>
+                                <div class="col-9">
+                                   <h4 class="card-title"> <b>ADD NEW CUSTOMER</b></h4>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </a>
             </div>
             <div class="col-6">
-                <a href="{{ route('customer_create_without_customer') }}">
+                <a href="{{ route('save_query_without_client') }}">
                     <div class="card text-white bg-success mb-3 centerX" style="max-width: 18rem;" >
                         <div class="card-body">
-                            <h5 class="card-title">With Customer</h5>
+                            <div class="row">
+                                <div class="col-3">
+                                    <i class="fas fa-user-tie fa-4x "></i>
+                                </div>
+                                <div class="col-9">
+                                    <h4 class="card-title"> <b>VIEW EXISTING CUSTOMER</b></h4>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </a>
