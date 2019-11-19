@@ -8,7 +8,7 @@
                     <div class="card text-white bg-primary mb-3 centerX" style="max-width: 18rem;">
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-3 d-block d-sm-none">
+                                <div class="col-3 d-block d-sm-none d-md-block">
                                     <i class="fas fa-user-tie fa-4x "></i>
                                 </div>
                                 <div class="col-9">
@@ -24,7 +24,7 @@
                     <div class="card text-white bg-success mb-3 centerX" style="max-width: 18rem;" >
                         <div class="card-body">
                             <div class="row">
-                                <div class="col-3 d-block d-sm-none">
+                                <div class="col-3 d-block d-sm-none d-md-block">
                                     <i class="fas fa-user-tie fa-4x  "></i>
                                 </div>
                                 <div class="col-9">
