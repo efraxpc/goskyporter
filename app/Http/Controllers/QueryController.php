@@ -162,7 +162,7 @@ class QueryController extends Controller
                 ->get();
             return Datatables::of($customers)
                 ->addColumn('action', function ($customer) {
-                    return '<a href="/queries/edit/'.$customer->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a href="/queries/delete/'.$customer->id.'" class="btn btn-xs btn-danger m-2"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
+                    return '<a href="/queries/edit/'.$customer->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Choose</a>';
                 })
                 ->make(true);
         }
