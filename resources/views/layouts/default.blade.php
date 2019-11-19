@@ -207,8 +207,17 @@
         <!-- ### $Topbar ### -->
         <div class="row">
             <div class="col-4">
-                <a class="btn btn-success d-sm-none" role="button" href="{{ route('query_create_home') }}"><i
-                        class="fas fa-plus"></i> Query</a>
+                <ul class="nav justify-content mobile_menu d-sm-none">
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
+                           aria-haspopup="true" aria-expanded="false">Query</a>
+                        <div class="dropdown-menu">
+                            <a class='dropdown-item' href="{{ route('query_create_home') }}"><i class="fas fa-plus"></i>
+                                New</a>
+                            <a class='dropdown-item' href="{{ route('queries') }}"><i
+                                    class="fas fa-building"></i> List</a>
+                        </div>
+                    </li>
             </div>
             <div class="col-4">
                 <ul class="nav justify-content mobile_menu d-sm-none">
