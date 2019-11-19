@@ -21,12 +21,10 @@ class CreateQueriesTable extends Migration
 
         Schema::create('queries', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->integer('query_status');
+            $table->integer('querystatus');
             $table->integer('bookingsource');
             $table->integer('bookingtype');
             $table->integer('querytype');
-            $table->integer('origin');
-            $table->integer('destination');
             $table->integer('visastatus');
             $table->integer('airline');
             $table->date('query_date');
