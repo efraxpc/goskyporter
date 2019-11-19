@@ -145,14 +145,28 @@ class QueryController extends Controller
 
     public function create_with_customer_index()
     {
-        return view('queries.create_with_customer_index', compact('querystatuses',
-            'bookingsources',
-            'bookingtypes',
-            'querytypes',
-            'airports',
-            'visastatuses',
-            'airlines'
-        ));
+        if(request()->ajax()) {
+            $customers = Customer::select([
+                'customers.id',
+                'customers.first_name',
+                'customers.last_name',
+                'customers.indian_number',
+                'customers.us_phone_number',
+                'customers.email',
+                'users.name as handled_by',
+            ])
+                ->join('queries','queries.customer','=','customers.id')
+                ->join('users','queries.user_loggedin','=','users.id')
+
+                ->orderBy('id')
+                ->get();
+            return Datatables::of($customers)
+                ->addColumn('action', function ($customer) {
+                    return '<a href="/queries/edit/'.$customer->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a href="/queries/delete/'.$customer->id.'" class="btn btn-xs btn-danger m-2"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
+                })
+                ->make(true);
+        }
+        return view('queries.create_with_customer_index');
     }
 
     public function create_with_customer()

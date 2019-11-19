@@ -20,7 +20,7 @@
                 </a>
             </div>
             <div class="col-6">
-                <a href="{{ route('query_create_with_customer') }}">
+                <a href="{{ route('query_create_with_customer_index') }}">
                     <div class="card text-white bg-success mb-3 centerX" style="max-width: 18rem;" >
                         <div class="card-body">
                             <div class="row">

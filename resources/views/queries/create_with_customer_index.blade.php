@@ -12,15 +12,15 @@
 
         <div class="col-12">
             <hr>
-            <h3>Queries</h3>
+            <h3>Existing customers</h3>
             <table class="responsive nowrap table table-striped" id="queries-table" cellspacing="0" width="100%">
                 <thead>
                 <tr>
                     <td>ID</td>
-                    <td class="text-center desktop mobile tablet">Status</td>
-                    <td class="text-center desktop mobile tablet">Customer</td>
-                    <td class="text-center desktop mobile tablet">Origin</td>
-                    <td class="text-center desktop mobile tablet">Destinaton</td>
+                    <td class="text-center desktop mobile tablet">Name</td>
+                    <td class="text-center desktop mobile tablet">Indian Phone</td>
+                    <td class="text-center desktop mobile tablet">American Phone</td>
+                    <td class="text-center desktop mobile tablet">Email</td>
                     <td class="text-center desktop mobile tablet">Handling by</td>
                     <td>Actions</td>
                 </tr>
@@ -40,42 +40,42 @@
             index: SITEURL + "/queries/data",
             columns: [
                 { data: 'id', name: 'id', "visible": false, "searchable": false },
-                { data: 'query_status', name: 'query_status' },
-                { data: 'user_name', name: 'user_name' },
-                { data: 'origin', name: 'origin' },
-                { data: 'destination', name: 'destination' },
                 { data: 'first_name', name: 'first_name' },
+                { data: 'indian_number', name: 'indian_number' },
+                { data: 'us_phone_number', name: 'us_phone_number' },
+                { data: 'email', name: 'email' },
+                { data: 'handled_by', name: 'handled_by' },
                 { data: 'action', name: 'action', orderable: false, searchable: false }
             ],
             "columnDefs": [
                 {
                     "targets": 1,
                     "render": function (data, type, row, meta) {
-                        return row.query_status
+                        return row.first_name + ' ' + row.last_name
                     }
                 },
                 {
                     "targets": 2,
                     "render": function (data, type, row, meta) {
-                        return row.first_name + ' ' + row.last_name
+                        return row.indian_number
                     }
                 },
                 {
                     "targets": 3,
                     "render": function (data, type, row, meta) {
-                        return row.origin + ' - ' + row.origin_data
+                        return row.us_phone_number
                     }
                 },
                 {
                     "targets": 4,
                     "render": function (data, type, row, meta) {
-                        return row.destination + ' - ' + row.destination_data
+                        return row.email
                     }
                 },
                 {
                     "targets": 5,
                     "render": function (data, type, row, meta) {
-                        return row.user_name
+                        return row.handled_by
                     }
                 },
             ],
