@@ -9,7 +9,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-3">
-                                    <i class="fas fa-user-tie fa-4x "></i>
+                                    <i class="fas fa-user-tie fa-4x d-sm-none"></i>
                                 </div>
                                 <div class="col-9">
                                    <h4 class="card-title"> <b>ADD NEW CUSTOMER</b></h4>
@@ -25,7 +25,7 @@
                         <div class="card-body">
                             <div class="row">
                                 <div class="col-3">
-                                    <i class="fas fa-user-tie fa-4x "></i>
+                                    <i class="fas fa-user-tie fa-4x d-sm-none"></i>
                                 </div>
                                 <div class="col-9">
                                     <h4 class="card-title"> <b>VIEW EXISTING CUSTOMER</b></h4>
