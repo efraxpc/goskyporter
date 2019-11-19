@@ -36,12 +36,13 @@ class QueryController extends Controller
                 't2.data as destination_data',
                 'users.name as user_name',
             ])
-                ->leftJoin('query_statuses','query_statuses.id','=','queries.query_status')
-                ->leftJoin('customers','customers.id','=','queries.customer')
-                ->leftJoin('users','users.id','=','queries.user_loggedin')
-                ->leftJoin('airports as t1','t1.id','=','queries.origin')
-                ->leftJoin('airports as t2','t2.id','=','queries.destination')
+                ->Join('query_statuses','query_statuses.id','=','queries.query_status')
+                ->Join('customers','customers.id','=','queries.customer')
+                ->Join('users','users.id','=','queries.user_loggedin')
+                ->Join('airports as t1','t1.id','=','queries.origin')
+                ->Join('airports as t2','t2.id','=','queries.destination')
                 ->orderBy('id')
+                ->groupBy('queries.id')
                 ->get();
             return Datatables::of($queries)
                 ->addColumn('action', function ($query) {
@@ -172,7 +173,7 @@ class QueryController extends Controller
     public function create_with_customer_index()
     {
         if(request()->ajax()) {
-            $customers = Customer::select([
+            $customers = Query::select([
                 'customers.id',
                 'customers.first_name',
                 'customers.last_name',
@@ -181,10 +182,10 @@ class QueryController extends Controller
                 'customers.email',
                 'users.name as handled_by',
             ])
-                ->join('queries','queries.customer','=','customers.id')
-                ->join('users','queries.user_loggedin','=','users.id')
-
+                ->Join('customers','customers.id','=','queries.customer')
+                ->Join('users','users.id','=','queries.user_loggedin')
                 ->orderBy('id')
+                ->groupBy('customers.id')
                 ->get();
             return Datatables::of($customers)
                 ->addColumn('action', function ($customer) {
