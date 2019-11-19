@@ -18,11 +18,11 @@
                 <tr>
                     <td>ID</td>
                     <td class="text-center desktop mobile tablet">Status</td>
-                    <td class="text-center desktop">Customer</td>
+                    <td class="text-center desktop mobile table">Customer</td>
                     <td class="text-center desktop">Origin</td>
                     <td class="text-center desktop">Destinaton</td>
-                    <td class="text-center desktop">Handling by</td>
-                    <td>Actions</td>
+                    <td class="text-center desktop mobile table">Handling by</td>
+                    <td class="text-center desktop">Actions</td>
                 </tr>
                 </thead>
             </table>
