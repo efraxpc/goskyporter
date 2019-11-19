@@ -149,6 +149,14 @@
                         <span class="title">Queries lists</span>
                     </a>
                 </li>
+                <li class="nav-item ">
+                    <a class="sidebar-link" href="{{ route('users.index') }}">
+                        <span class="icon-holder">
+                          <i class="fas fa-users"></i>
+                        </span>
+                        <span class="title">Manage users</span>
+                    </a>
+                </li>
                 <li class="nav-item dropdown">
                     <a class="dropdown-toggle click_info_icon" href="javascript:void(0);">
                         <span class="icon-holder">
@@ -229,11 +237,20 @@
             <div class="col-4">
                 <ul class="nav justify-content-end">
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
-                           aria-haspopup="true" aria-expanded="false">Profile</a>
-                        <div class="dropdown-menu">
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">Logout</a>
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            {{ Auth::user()->name }} <span class="caret"></span>
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
                         </div>
                     </li>
                 </ul>
