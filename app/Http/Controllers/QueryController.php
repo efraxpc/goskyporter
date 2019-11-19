@@ -36,11 +36,11 @@ class QueryController extends Controller
                 't2.data as destination_data',
                 'users.name as user_name',
             ])
-                ->join('query_statuses','query_statuses.id','=','queries.query_status')
-                ->join('customers','customers.id','=','queries.customer')
-                ->join('users','users.id','=','queries.user_loggedin')
-                ->join('airports as t1','t1.id','=','queries.origin')
-                ->join('airports as t2','t2.id','=','queries.destination')
+                ->leftJoin('query_statuses','query_statuses.id','=','queries.query_status')
+                ->leftJoin('customers','customers.id','=','queries.customer')
+                ->leftJoin('users','users.id','=','queries.user_loggedin')
+                ->leftJoin('airports as t1','t1.id','=','queries.origin')
+                ->leftJoin('airports as t2','t2.id','=','queries.destination')
                 ->orderBy('id')
                 ->get();
             return Datatables::of($queries)
@@ -75,29 +75,48 @@ class QueryController extends Controller
         ));
     }
 
-    public function save_without_client(Request $request)
+    public function save(Request $request)
     {
-        $request->validate([
-            'first_name'=>'required',
-            'last_name'=>'required',
-            'us_phone_number'=>'required',
-            'us_alternate_phone_number'=>'required',
-            'indian_phone'=>'required',
-            'email'=>'required',
-            'query_status'=>'required',
-            'query_date'=>'required',
-            'query_type'=>'required',
-            'booking_type'=>'required',
-            'origin'=>'required',
-            'destination'=>'required',
-            'departure_date'=>'required',
-            'arrival_date'=>'required',
-            'passengerdetails'=>'required',
-            'remarks'=>'required',
-            'bookingsource'=>'required',
-            'visa_status'=>'required',
-            'airline'=>'required',
-        ]);
+        if(!$request->get('customer_id')) {
+            $request->validate([
+                'first_name'=>'required',
+                'last_name'=>'required',
+                'us_phone_number'=>'required',
+                'us_alternate_phone_number'=>'required',
+                'indian_phone'=>'required',
+                'email'=>'required',
+                'query_status'=>'required',
+                'query_date'=>'required',
+                'query_type'=>'required',
+                'booking_type'=>'required',
+                'origin'=>'required',
+                'destination'=>'required',
+                'departure_date'=>'required',
+                'arrival_date'=>'required',
+                'passengerdetails'=>'required',
+                'remarks'=>'required',
+                'bookingsource'=>'required',
+                'visa_status'=>'required',
+                'airline'=>'required',
+            ]);
+        }else{
+            $request->validate([
+                'query_status'=>'required',
+                'query_date'=>'required',
+                'query_type'=>'required',
+                'booking_type'=>'required',
+                'origin'=>'required',
+                'destination'=>'required',
+                'departure_date'=>'required',
+                'arrival_date'=>'required',
+                'passengerdetails'=>'required',
+                'remarks'=>'required',
+                'bookingsource'=>'required',
+                'visa_status'=>'required',
+                'airline'=>'required',
+            ]);
+        }
+
 
         foreach($request->get('remarks') as $key => $value){
             $remarks_array[] = $value;
@@ -105,15 +124,22 @@ class QueryController extends Controller
         $convertedObj = $this->ToObject($remarks_array);
         $serialized_object = serialize($convertedObj);
 
-        $customer = new Customer([
-            'first_name' => $request->get('first_name'),
-            'last_name' => $request->get('last_name'),
-            'us_phone_number' => $request->get('us_phone_number'),
-            'us_alternate_number' => $request->get('us_alternate_phone_number'),
-            'indian_number' => $request->get('indian_phone'),
-            'email' => $request->get('email'),
-        ]);
-        $customer->save();
+        $customerId = $request->get('customer_id');
+
+        if(!$request->get('customer_id'))
+        {
+            $customer = new Customer([
+                'first_name' => $request->get('first_name'),
+                'last_name' => $request->get('last_name'),
+                'us_phone_number' => $request->get('us_phone_number'),
+                'us_alternate_number' => $request->get('us_alternate_phone_number'),
+                'indian_number' => $request->get('indian_phone'),
+                'email' => $request->get('email'),
+            ]);
+            $customer->save();
+
+            $customerId = $customer->id;
+        }
 
         $query = new Query([
             'first_name' => $request->get('first_name'),
@@ -136,7 +162,7 @@ class QueryController extends Controller
             'airline' => $request->get('airline'),
             'user_loggedin' => auth()->user()->id,
             'remarks' => $serialized_object,
-            'customer' => $customer->id,
+            'customer' => $customerId,
         ]);
         $query->save();
 
@@ -162,14 +188,14 @@ class QueryController extends Controller
                 ->get();
             return Datatables::of($customers)
                 ->addColumn('action', function ($customer) {
-                    return '<a href="/queries/edit/'.$customer->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Choose</a>';
+                    return '<a href="/query/create-with-customer/'.$customer->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Choose</a>';
                 })
                 ->make(true);
         }
         return view('queries.create_with_customer_index');
     }
 
-    public function create_with_customer()
+    public function create_with_customer($customerId)
     {
         $querystatuses = QueryStatus::all();
         $bookingsources = BookingSource::all();
@@ -185,7 +211,8 @@ class QueryController extends Controller
             'querytypes',
             'airports',
             'visastatuses',
-            'airlines'
+            'airlines',
+            'customerId'
         ));
     }
 

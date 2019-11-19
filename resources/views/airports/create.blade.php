@@ -20,11 +20,11 @@
                     @csrf
                     <div class="form-group">
                         <label for="name">Name:</label>
-                        <input type="text" class="form-control" name="name"/>
+                        <input type="text" class="form-control" name="name" required/>
                     </div>
                     <div class="form-group">
                         <label for="data">Data:</label>
-                        <input type="text" class="form-control" name="data"/>
+                        <input type="text" class="form-control" name="data" required/>
                     </div>
                     <button type="submit" class="btn btn-primary">Add</button>
                 </form>

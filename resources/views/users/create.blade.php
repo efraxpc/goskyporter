@@ -21,11 +21,11 @@
                     @csrf
                     <div class="form-group">
                         <label for="name">Name:</label>
-                        <input type="text" class="form-control" name="name"/>
+                        <input type="text" class="form-control" name="name" required/>
                     </div>
                     <div class="form-group">
                         <label for="email">Email:</label>
-                        <input type="text" class="form-control" name="email"/>
+                        <input type="text" class="form-control" name="email" required/>
                     </div>
                     <div class="form-group">
                         <label for="password">Password:</label>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="form-group">
                         <label for="role">Role</label>
-                        <select class="form-control" name="role">
+                        <select class="form-control" name="role" required>
                             <option value="3">Agent</option>
                             <option value="2">Admin</option>
                         </select>

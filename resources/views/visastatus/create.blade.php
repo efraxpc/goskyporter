@@ -20,7 +20,7 @@
                     @csrf
                     <div class="form-group">
                         <label for="status">Status:</label>
-                        <input type="text" class="form-control" name="status"/>
+                        <input type="text" class="form-control" name="status" required/>
                     </div>
                     <button type="submit" class="btn btn-primary">Add</button>
                 </form>

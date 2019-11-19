@@ -21,11 +21,11 @@
                 @csrf
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" class="form-control" name="name" value="{{ $airport->name }}" />
+                    <input type="text" class="form-control" name="name" value="{{ $airport->name }}" required/>
                 </div>
                 <div class="form-group">
                     <label for="data">Data:</label>
-                    <input type="text" class="form-control" name="data" value="{{ $airport->data }}" />
+                    <input type="text" class="form-control" name="data" value="{{ $airport->data }}" required/>
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>

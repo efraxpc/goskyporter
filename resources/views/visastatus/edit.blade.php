@@ -21,7 +21,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="status">Status:</label>
-                    <input type="text" class="form-control" name="status" value="{{ $visastatus->status }}" />
+                    <input type="text" class="form-control" name="status" value="{{ $visastatus->status }}" required/>
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>

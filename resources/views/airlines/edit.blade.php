@@ -21,7 +21,7 @@
                 @csrf
                 <div class="form-group">
                     <label for="name">Name:</label>
-                    <input type="text" class="form-control" name="name" value="{{ $airline->name }}" />
+                    <input type="text" class="form-control" name="name" value="{{ $airline->name }}" required/>
                 </div>
                 <button type="submit" class="btn btn-primary">Update</button>
             </form>

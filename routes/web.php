@@ -28,8 +28,9 @@ Route::get('/query/create', 'QueryController@create_home')->name('query_create_h
 Route::get('/query/create-without-customer', 'QueryController@create_without_customer')->name('query_create_without_customer');
 Route::get('/query/create-with-customer/list', 'QueryController@create_with_customer_index')->name('query_create_with_customer_index');
 Route::get('/query/create-with-customer/list/data', 'QueryController@anyData');
+Route::get('/query/create-with-customer/{customer_id}', 'QueryController@create_with_customer')->name('query_create_with_customer');
 
-Route::post('/query/save', 'QueryController@save_without_client')->name('save_query_without_client');
+Route::post('/query/save', 'QueryController@save')->name('save_query');
 
 Route::get('/queries', 'QueryController@getIndex')->name('queries');
 Route::get('/queries/data', 'QueryController@anyData');
