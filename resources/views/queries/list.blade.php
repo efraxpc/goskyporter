@@ -9,7 +9,6 @@
                 </div>
             @endif
         </div>
-
         <div class="col-12">
             <hr>
             <h3>Queries</h3>
@@ -69,11 +68,9 @@
                     "targets": 4,
                     "render": function (data, type, row, meta) {
                         str = '<div class="text-center"><ul style="list-style: none;">'
-
                         row.remarks.forEach(function(slide) {
                             str += '<li>'+ slide + '</li>';
                         });
-
                         str += '</ul></div>';
                         return str
                     }

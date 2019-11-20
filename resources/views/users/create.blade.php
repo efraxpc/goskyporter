@@ -35,13 +35,6 @@
                         <label for="password">Confirm password:</label>
                         <input id="password2" class="form-control" required type=password name=password2>
                     </div>
-                    <div class="form-group">
-                        <label for="role">Role</label>
-                        <select class="form-control" name="role" required>
-                            <option value="3">Agent</option>
-                            <option value="2">Admin</option>
-                        </select>
-                    </div>
                     <button type="submit" class="btn btn-primary">Add</button>
                 </form>
             </div>

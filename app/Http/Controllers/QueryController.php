@@ -51,14 +51,27 @@ class QueryController extends Controller
                 $remarks = unserialize($query->remarks);
 
                 $query->remarks = $remarks;
-       
+
             }
 
-            return Datatables::of($queries)
+            $response =  Datatables::of($queries)
                 ->addColumn('action', function ($query) {
-                    return '<div class="text-center"><a href="/queries/'.$query->id.'" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-eye"></i> View</a> <a href="/queries/edit/'.$query->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a href="/queries/delete/'.$query->id.'" class="btn btn-xs btn-danger m-2"><i class="glyphicon glyphicon-edit"></i> Delete</a></div>';
+                    return '<div class="text-center"><a href="/queries/'.$query->id.'" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-eye"></i> View</a>';
                 })
                 ->make(true);
+
+            if(auth()->user()->role == 2)
+            {
+                $response = Datatables::of($queries)
+                    ->addColumn('action', function ($query) {
+                        return '<div class="text-center"><a href="/queries/'.$query->id.'" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-eye"></i> View</a>
+                            <a href="/queries/edit/'.$query->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+                            <a href="/queries/delete/'.$query->id.'" class="btn btn-xs btn-danger m-2"><i class="glyphicon glyphicon-edit"></i> Delete</a></div>';
+                    })
+                    ->make(true);
+            }
+
+            return $response;
         }
         return view('queries.list');
     }
