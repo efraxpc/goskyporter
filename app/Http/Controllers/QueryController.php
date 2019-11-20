@@ -49,7 +49,12 @@ class QueryController extends Controller
 
             foreach ($queries as $query) {
                 $remarks = unserialize($query->remarks);
+
                 $query->remarks = $remarks;
+                if(!$remarks)
+                {
+                    $query->remarks = '';
+                }
             }
 
             return Datatables::of($queries)
