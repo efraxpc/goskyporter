@@ -70,7 +70,7 @@
                     "render": function (data, type, row, meta) {
 
                         var str = 'No remarks'
-                        if(row.remarks.length >=1 )
+                        if(row.remarks[0] === '' )
                         {
                             str = '<div class="text-center"><ul style="list-style: none;">'
 
