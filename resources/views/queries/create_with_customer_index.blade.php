@@ -19,10 +19,10 @@
                     <td>ID</td>
                     <td class="text-center desktop mobile tablet">Name</td>
                     <td class="text-center desktop mobile tablet">Indian Phone</td>
-                    <td class="text-center desktop mobile tablet">American Phone</td>
-                    <td class="text-center desktop mobile tablet">Email</td>
+                    <td class="text-center desktop">American Phone</td>
+                    <td class="text-center desktop">Email</td>
                     <td class="text-center desktop mobile tablet">Handling by</td>
-                    <td class="text-center desktop mobile tablet">Actions</td>
+                    <td class="text-center desktop">Actions</td>
                 </tr>
                 </thead>
             </table>
