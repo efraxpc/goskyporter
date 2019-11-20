@@ -79,6 +79,7 @@
                 data: $(this).serialize(), // serialize the form's data
                 success: function(response) {
                     $('#modalAddRemarks').modal('toggle');
+                    $('#form_save_remark')[0].reset();
                     $('.dataTable').each(function() {
                         dt = $(this).dataTable();
                         dt.fnDraw();

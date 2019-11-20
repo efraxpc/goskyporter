@@ -144,7 +144,10 @@ class QueryController extends Controller
             ]);
         }
         foreach($request->get('remarks') as $key => $value){
-            $remarks_array[] = $value;
+            if($value)
+            {
+                $remarks_array[] = $value;
+            }
         }
         $convertedObj = $this->ToObject($remarks_array);
         $serialized_object = serialize($convertedObj);
