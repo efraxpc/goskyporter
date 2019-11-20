@@ -55,6 +55,8 @@
                 opacity: 0;
             }
         }
+
+
     </style>
     <link href="{{ asset('css/1.css') }}" rel="stylesheet">
     <link href="{{ asset('css/2.css') }}" rel="stylesheet">

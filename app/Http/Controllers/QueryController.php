@@ -46,7 +46,7 @@ class QueryController extends Controller
                 ->get();
             return Datatables::of($queries)
                 ->addColumn('action', function ($query) {
-                    return '<a href="/queries/edit/'.$query->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a href="/queries/delete/'.$query->id.'" class="btn btn-xs btn-danger m-2"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
+                    return '<a href="/queries/'.$query->id.'" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-eye"></i> View</a> <a href="/queries/edit/'.$query->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a href="/queries/delete/'.$query->id.'" class="btn btn-xs btn-danger m-2"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
                 })
                 ->make(true);
         }
@@ -117,8 +117,6 @@ class QueryController extends Controller
                 'airline'=>'required',
             ]);
         }
-
-
         foreach($request->get('remarks') as $key => $value){
             $remarks_array[] = $value;
         }
@@ -238,5 +236,31 @@ class QueryController extends Controller
         $query->delete();
 
         return redirect('/queries')->with('success', 'Query deleted!');
+    }
+
+    public function view($id)
+    {
+        $query = Query::find($id);
+
+        $querystatuses = QueryStatus::all();
+        $bookingsources = BookingSource::all();
+        $bookingtypes = BookingType::all();
+        $querytypes = QueryType::all();
+        $airports = Airport::all();
+        $visastatuses = VisaStatus::all();
+        $airlines = Airline::all();
+
+        $customer = Customer::find($query->customer);
+
+        return view('queries.view', compact('querystatuses',
+            'bookingsources',
+            'bookingtypes',
+            'querytypes',
+            'airports',
+            'visastatuses',
+            'airlines',
+            'query',
+            'customer'
+        ));
     }
 }

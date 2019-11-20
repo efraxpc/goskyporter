@@ -2,10 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file:///var/www/html/adminator/.idea/adminator.iml" filepath="/var/www/html/adminator/.idea/adminator.iml" />
-      <module fileurl="file://$PROJECT_DIR$/../cobra-paga-api/.idea/cobra-paga-api.iml" filepath="$PROJECT_DIR$/../cobra-paga-api/.idea/cobra-paga-api.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/goskyporter.iml" filepath="$PROJECT_DIR$/.idea/goskyporter.iml" />
-      <module fileurl="file:///var/www/html/test/.idea/test.iml" filepath="/var/www/html/test/.idea/test.iml" />
     </modules>
   </component>
 </project>
