@@ -22,7 +22,7 @@
                     <td class="text-center desktop mobile tablet">American Phone</td>
                     <td class="text-center desktop mobile tablet">Email</td>
                     <td class="text-center desktop mobile tablet">Handling by</td>
-                    <td>Actions</td>
+                    <td class="text-center desktop mobile tablet">Actions</td>
                 </tr>
                 </thead>
             </table>
@@ -51,31 +51,31 @@
                 {
                     "targets": 1,
                     "render": function (data, type, row, meta) {
-                        return row.first_name + ' ' + row.last_name
+                        return '<p class="text-center">'+row.first_name + ' ' + row.last_name+'</p>'
                     }
                 },
                 {
                     "targets": 2,
                     "render": function (data, type, row, meta) {
-                        return row.indian_number
+                        return '<p class="text-center">'+row.indian_number+'</p>'
                     }
                 },
                 {
                     "targets": 3,
                     "render": function (data, type, row, meta) {
-                        return row.us_phone_number
+                        return '<p class="text-center">'+row.us_phone_number+'</p>'
                     }
                 },
                 {
                     "targets": 4,
                     "render": function (data, type, row, meta) {
-                        return row.email
+                        return '<p class="text-center">'+row.email+'</p>'
                     }
                 },
                 {
                     "targets": 5,
                     "render": function (data, type, row, meta) {
-                        return row.handled_by
+                        return '<p class="text-center">'+row.handled_by+'</p>'
                     }
                 },
             ],

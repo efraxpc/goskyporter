@@ -29,12 +29,14 @@ class QueryController extends Controller
                 'query_statuses.name as query_status',
                 'customers.first_name',
                 'customers.last_name',
+                'customers.indian_number',
                 'queries.created_at',
                 't1.name as origin',
                 't1.data as origin_data',
                 't2.name as destination',
                 't2.data as destination_data',
                 'users.name as user_name',
+                'queries.remarks',
             ])
                 ->Join('query_statuses','query_statuses.id','=','queries.query_status')
                 ->Join('customers','customers.id','=','queries.customer')
@@ -44,9 +46,15 @@ class QueryController extends Controller
                 ->orderBy('id')
                 ->groupBy('queries.id')
                 ->get();
+
+            foreach ($queries as $query) {
+                $remarks = unserialize($query->remarks);
+                $query->remarks = $remarks;
+            }
+
             return Datatables::of($queries)
                 ->addColumn('action', function ($query) {
-                    return '<a href="/queries/'.$query->id.'" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-eye"></i> View</a> <a href="/queries/edit/'.$query->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a href="/queries/delete/'.$query->id.'" class="btn btn-xs btn-danger m-2"><i class="glyphicon glyphicon-edit"></i> Delete</a>';
+                    return '<div class="text-center"><a href="/queries/'.$query->id.'" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-eye"></i> View</a> <a href="/queries/edit/'.$query->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a><a href="/queries/delete/'.$query->id.'" class="btn btn-xs btn-danger m-2"><i class="glyphicon glyphicon-edit"></i> Delete</a></div>';
                 })
                 ->make(true);
         }
@@ -187,7 +195,7 @@ class QueryController extends Controller
                 ->get();
             return Datatables::of($customers)
                 ->addColumn('action', function ($customer) {
-                    return '<a href="/query/create-with-customer/'.$customer->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Choose</a>';
+                    return '<div class="text-center"><a href="/query/create-with-customer/'.$customer->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Choose</a></div>';
                 })
                 ->make(true);
         }

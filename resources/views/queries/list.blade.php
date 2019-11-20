@@ -19,8 +19,8 @@
                     <td>ID</td>
                     <td class="text-center desktop mobile tablet">Status</td>
                     <td class="text-center desktop mobile tablet">Customer</td>
-                    <td class="text-center desktop">Origin</td>
-                    <td class="text-center desktop">Destinaton</td>
+                    <td class="text-center desktop mobile tablet">Phone number</td>
+                    <td class="text-center desktop mobile tablet">Remarks</td>
                     <td class="text-center desktop mobile tablet">Handling by</td>
                     <td class="text-center desktop">Actions</td>
                 </tr>
@@ -42,40 +42,54 @@
                 { data: 'id', name: 'id', "visible": false, "searchable": false },
                 { data: 'query_status', name: 'query_status' },
                 { data: 'user_name', name: 'user_name' },
-                { data: 'origin', name: 'origin' },
-                { data: 'destination', name: 'destination' },
-                { data: 'first_name', name: 'first_name' },
+                { data: 'indian_number', name: 'indian_number' },
+                { data: 'remarks', name: 'remarks' },
                 { data: 'action', name: 'action', orderable: false, searchable: false }
             ],
             "columnDefs": [
                 {
                     "targets": 1,
                     "render": function (data, type, row, meta) {
-                        return row.query_status
+                        return '<p class="text-center">'+row.query_status+'</p>'
                     }
                 },
                 {
                     "targets": 2,
                     "render": function (data, type, row, meta) {
-                        return row.first_name + ' ' + row.last_name
+                        return '<p class="text-center">'+row.first_name + ' ' + row.last_name+'</p>'
                     }
                 },
                 {
                     "targets": 3,
                     "render": function (data, type, row, meta) {
-                        return row.origin + ' - ' + row.origin_data
+                        return '<p class="text-center">'+row.indian_number+'</p>'
                     }
                 },
                 {
                     "targets": 4,
                     "render": function (data, type, row, meta) {
-                        return row.destination + ' - ' + row.destination_data
+
+                        var str = '<div class="text-center"><ul style="list-style: none;">'
+
+                        row.remarks.forEach(function(slide) {
+                            str += '<li>'+ slide + '</li>';
+                        });
+
+                        str += '</ul></div>';
+
+                        return str
                     }
                 },
                 {
                     "targets": 5,
                     "render": function (data, type, row, meta) {
-                        return row.user_name
+                        return '<p class="text-center">'+row.user_name+'</p>'
+                    }
+                },
+                {
+                    "targets": 6,
+                    "render": function (data, type, row, meta) {
+                        return row.action
                     }
                 },
             ],
