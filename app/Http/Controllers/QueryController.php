@@ -51,10 +51,7 @@ class QueryController extends Controller
                 $remarks = unserialize($query->remarks);
 
                 $query->remarks = $remarks;
-                if(strlen($remarks) == 0)
-                {
-                    $query->remarks = '';
-                }
+       
             }
 
             return Datatables::of($queries)
