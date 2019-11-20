@@ -84,7 +84,7 @@
                                         <select class="query_status" name="query_status" style="width: 100%" required readonly="true">
                                             <option value="">-- Select --</option>
                                             @foreach($querystatuses as $querystatus_var)
-                                                <option value="{{$querystatus_var->id}}" @if($query->query_status === $querystatus_var->id) selected @endif>{{$querystatus_var->name}}</option>
+                                                <option value="{{$querystatus_var->id}}" @if($query->query_status == $querystatus_var->id) selected @endif>{{$querystatus_var->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
