@@ -92,7 +92,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="query_date">Query date:</label>
-                                        <input type="date" class="form-control" name="query_date" value="{{ old('query_date') }}" required>
+                                        <input type="date" class="form-control" name="query_date" id="query_date" value="{{ old('query_date') }}" required>
                                     </div>
                                 </div>
                             </div>
@@ -277,6 +277,8 @@
             $(this).parent('div').remove(); //Remove field html
             x--; //Decrement field counter
         });
+
+        document.getElementById("query_date").valueAsDate = new Date();
     </script>
 
 @endsection

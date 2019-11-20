@@ -13,10 +13,5 @@ class Customer extends Model
         'us_alternate_number',
         'indian_number',
         'email',
-        'airline',
-        'query_date',
-        'departure_date',
-        'arrival_date',
-        'passenger_details',
     ];
 }
