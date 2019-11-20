@@ -69,7 +69,7 @@
                     "targets": 4,
                     "render": function (data, type, row, meta) {
                         var str = 'No remarks'
-                        if(row.remarks[0] !== '' || row.remarks.length >= 2 )
+                        if(row.remarks[0] !== '' && row.remarks.length >= 2 )
                         {
                             str = '<div class="text-center"><ul style="list-style: none;">'
 
