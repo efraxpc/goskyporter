@@ -237,7 +237,6 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Add</button>
                 </form>
             </div>
         </div>
