@@ -51,7 +51,7 @@ class QueryController extends Controller
                 $remarks = unserialize($query->remarks);
 
                 $query->remarks = $remarks;
-                if(!$remarks)
+                if(strlen($remarks) == 0)
                 {
                     $query->remarks = '';
                 }
