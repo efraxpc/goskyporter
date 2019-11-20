@@ -28,9 +28,66 @@
 
         </div>
     </div>
+
+    <!-- Modal -->
+    <div class="modal fade" id="modalAddRemarks" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add New Remark</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <form method="post" action="{{ route('save_remark') }}" id="form_save_remark">
+                    @csrf
+                    <div class="modal-body">
+                        <input type="hidden" name="id_query" id="id_query">
+                        <input type="text" class="form-control" name="remark" required/>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 @endsection
 @section('scripts')
     <script>
+        let $modal = $('#modalAddRemarks');
+
+        // show the modal when delete button clicked
+        $('#queries-table').on('click', '.del_' ,function(e){
+            e.preventDefault();
+            $modal.modal('show');
+            $('#id_query').val($(this)[0].getAttribute('data-id'))
+
+        });
+
+        // grab the data-id value from the button that was clicked once modal is shown
+        $modal.on('show.bs.modal', function (event) {
+            var id = $(event.relatedTarget).data('id');
+            $("#del_id").val(id);
+        });
+
+        $('#form_save_remark').submit(function() { // bind function to submit event of form
+            $.ajax({
+                type: $(this).attr('method'), // get type of request from 'method'
+                url: $(this).attr('action'), // get url of request from 'action'
+                data: $(this).serialize(), // serialize the form's data
+                success: function(response) {
+                    $('#modalAddRemarks').modal('toggle');
+                    $('.dataTable').each(function() {
+                        dt = $(this).dataTable();
+                        dt.fnDraw();
+                    })
+                }
+            });
+            return false; // important: prevent the form from submitting
+        });
+
         var SITEURL = '{{URL::to('')}}';
         $('#queries-table').DataTable({
             responsive: true,
@@ -90,6 +147,7 @@
             ],
             order: [[0, 'desc']]
         });
+
     </script>
 
 @stop

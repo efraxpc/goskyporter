@@ -37,3 +37,4 @@ Route::get('/queries/data', 'QueryController@anyData');
 Route::get('/queries/delete/{id}', 'QueryController@destroy');
 Route::get('/queries/edit/{id}', 'QueryController@edit');
 Route::get('/queries/{id}', 'QueryController@view')->name('queries_view');
+Route::post('/save/remark', 'QueryController@saveRemark')->name('save_remark');
