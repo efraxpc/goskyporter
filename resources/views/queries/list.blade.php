@@ -69,13 +69,17 @@
                     "targets": 4,
                     "render": function (data, type, row, meta) {
 
-                        var str = '<div class="text-center"><ul style="list-style: none;">'
+                        var str = 'No remarks'
+                        if(row.remarks.length >=1 )
+                        {
+                            str = '<div class="text-center"><ul style="list-style: none;">'
 
-                        row.remarks.forEach(function(slide) {
-                            str += '<li>'+ slide + '</li>';
-                        });
+                            row.remarks.forEach(function(slide) {
+                                str += '<li>'+ slide + '</li>';
+                            });
 
-                        str += '</ul></div>';
+                            str += '</ul></div>';
+                        }
 
                         return str
                     }
