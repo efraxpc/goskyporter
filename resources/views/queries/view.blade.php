@@ -103,7 +103,7 @@
                                         <select class="booking_source" name="bookingsource" style="width: 100%" value="{{ $query->bookingsource  }}">
                                             <option value="">-- Select --</option>
                                             @foreach($bookingsources as $bookingsource_var)
-                                                <option value="{{$bookingsource_var->id}}" @if($query->bookingsource === $bookingsource_var->id) selected @endif> {{$bookingsource_var->name}}</option>
+                                                <option value="{{$bookingsource_var->id}}" @if($query->bookingsource == $bookingsource_var->id) selected @endif> {{$bookingsource_var->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -114,7 +114,7 @@
                                         <select class="query_type" name="query_type" style="width: 100%" required>
                                             <option value="">-- Select --</option>
                                             @foreach($querytypes as $querytype_var)
-                                                <option value="{{$querytype_var->id}}" @if($query->querytype === $querytype_var->id) selected @endif>{{$querytype_var->name}}</option>
+                                                <option value="{{$querytype_var->id}}" @if($query->querytype == $querytype_var->id) selected @endif>{{$querytype_var->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -127,7 +127,7 @@
                                         <select class="booking_type" name="booking_type" style="width: 100%" required>
                                             <option value="">-- Select --</option>
                                             @foreach($bookingtypes as $bookingtype_var)
-                                                <option value="{{$bookingtype_var->id}}" @if($query->bookingtype === $bookingtype_var->id) selected @endif >{{$bookingtype_var->name}}</option>
+                                                <option value="{{$bookingtype_var->id}}" @if($query->bookingtype == $bookingtype_var->id) selected @endif >{{$bookingtype_var->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -150,7 +150,7 @@
                                         <select class="origin" name="origin" style="width: 100%" required>
                                             <option value="">-- Select --</option>
                                             @foreach($airports as $airport_var)
-                                                <option value="{{$airport_var->id}}" @if($query->origin === $airport_var->id) selected @endif >{{$airport_var->name}}</option>
+                                                <option value="{{$airport_var->id}}" @if($query->origin == $airport_var->id) selected @endif >{{$airport_var->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -161,7 +161,7 @@
                                         <select class="destination" name="destination" style="width: 100%" required>
                                             <option value="">-- Select --</option>
                                             @foreach($airports as $airport_var)
-                                                <option value="{{$airport_var->id}}" @if($query->destination === $airport_var->id) selected @endif >{{$airport_var->name}}</option>
+                                                <option value="{{$airport_var->id}}" @if($query->destination == $airport_var->id) selected @endif >{{$airport_var->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -188,7 +188,7 @@
                                         <select class="visa_status" name="visa_status" style="width: 100%" required>
                                             <option value="">-- Select --</option>
                                             @foreach($visastatuses as $visastatus_var)
-                                                <option value="{{$visastatus_var->id}}" @if($query->visastatus === $visastatus_var->id) selected @endif >{{$visastatus_var->status}}</option>
+                                                <option value="{{$visastatus_var->id}}" @if($query->visastatus == $visastatus_var->id) selected @endif >{{$visastatus_var->status}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -199,7 +199,7 @@
                                         <select class="airline" name="airline" style="width: 100%"required>
                                             <option value="">-- Select --</option>
                                             @foreach($airlines as $airline_var)
-                                                <option value="{{$airline_var->id}}" @if($query->airline === $airline_var->id) selected @endif >{{$airline_var->name}}</option>
+                                                <option value="{{$airline_var->id}}" @if($query->airline == $airline_var->id) selected @endif >{{$airline_var->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -249,7 +249,7 @@
     <script>
 
         $('.query_status').select2();
-        //$(".query_status").prop("disabled", true);
+        $(".query_status").prop("disabled", true);
         $('.booking_source').select2();
         $(".booking_source").prop("disabled", true);
         $('.query_type').select2();
