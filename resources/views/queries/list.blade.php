@@ -19,8 +19,8 @@
                     <td>ID</td>
                     <td class="text-center desktop mobile tablet">Status</td>
                     <td class="text-center desktop mobile tablet">Customer</td>
-                    <td class="text-center desktop mobile tablet">Phone number</td>
-                    <td class="text-center desktop mobile tablet">Remarks</td>
+                    <td class="text-center desktop ">Phone number</td>
+                    <td class="text-center desktop">Remarks</td>
                     <td class="text-center desktop mobile tablet">Handling by</td>
                     <td class="text-center desktop">Actions</td>
                 </tr>
