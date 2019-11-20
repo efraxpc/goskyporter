@@ -249,7 +249,7 @@
     <script>
 
         $('.query_status').select2();
-        $(".query_status").prop("disabled", true);
+        //$(".query_status").prop("disabled", true);
         $('.booking_source').select2();
         $(".booking_source").prop("disabled", true);
         $('.query_type').select2();
