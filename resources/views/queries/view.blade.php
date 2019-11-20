@@ -220,7 +220,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="passengerdetails">Passenger details</label>
-                                        <textarea class="form-control" id="passengerdetails" name="passengerdetails" rows="3" readonly="true"></textarea>
+                                        <textarea class="form-control" id="passengerdetails" name="passengerdetails" rows="3" readonly="true">{{$query->passenger_details}}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -228,8 +228,9 @@
                                         <label for="destination">Remarks:</label>
                                         <div class="field_wrapper">
                                             <div>
-                                                <input type="text" class="form-control" name="remarks[]" value="" readonly="true"/>
-                                                <a href="javascript:void(0);" class="add_button" title="Add field"><i class="fas fa-plus-square" style="color:green"></i></a>
+                                                @foreach($remarks as $remark)
+                                                    <input type="text" class="form-control" name="remarks[]" value="{{$remark}}" readonly="true"/>
+                                                @endforeach
                                             </div>
                                         </div>
                                     </div>

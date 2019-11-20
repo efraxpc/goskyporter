@@ -250,6 +250,8 @@ class QueryController extends Controller
         $visastatuses = VisaStatus::all();
         $airlines = Airline::all();
 
+        $remarks = unserialize($query->remarks);
+
         $customer = Customer::find($query->customer);
 
         return view('queries.view', compact('querystatuses',
@@ -260,7 +262,8 @@ class QueryController extends Controller
             'visastatuses',
             'airlines',
             'query',
-            'customer'
+            'customer',
+            'remarks'
         ));
     }
 }
