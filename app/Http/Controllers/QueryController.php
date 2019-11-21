@@ -56,7 +56,11 @@ class QueryController extends Controller
 
             $response =  Datatables::of($queries)
                 ->addColumn('action', function ($query) {
-                    return '<div class="text-center"><a href="#" class="del_ btn btn-xs btn-success" data-id='.$query->id.'>Add Remark</a> <a href="/queries/'.$query->id.'" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-eye"></i> View</a>';
+                    return '<div class="text-center">
+                    <a href="#" class="del_ btn btn-xs btn-success" data-id='.$query->id.'>Add Remark</a> 
+                    <a href="/queries/edit/'.$query->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
+                    <a href="/queries/'.$query->id.'" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-eye"></i> View</a>
+                    </div>';
                 })
                 ->make(true);
 
@@ -311,5 +315,79 @@ class QueryController extends Controller
         return response()->json([
             'success' => true
         ]);
+    }
+
+    public function edit($id){
+        $query = Query::find($id);
+
+        $querystatuses = QueryStatus::all();
+        $bookingsources = BookingSource::all();
+        $bookingtypes = BookingType::all();
+        $querytypes = QueryType::all();
+        $airports = Airport::all();
+        $visastatuses = VisaStatus::all();
+        $airlines = Airline::all();
+
+        $remarks = unserialize($query->remarks);
+
+        $customer = Customer::find($query->customer);
+
+        $queryId = $id;
+        return view('queries.edit', compact('querystatuses',
+            'bookingsources',
+            'bookingtypes',
+            'querytypes',
+            'airports',
+            'visastatuses',
+            'airlines',
+            'query',
+            'customer',
+            'queryId',
+            'remarks'
+        ));
+    }
+
+    public function update(Request $request)
+    {
+        foreach($request->get('remarks') as $key => $value){
+            if($value)
+            {
+                $remarks_array[] = $value;
+            }
+        }
+
+        $convertedObj = $this->ToObject($remarks_array);
+        $serialized_object = serialize($convertedObj);
+
+        $customerId = $request->get('customer_id');
+
+        $queryId = $request->get('queryId');
+        $query = Query::find($queryId);
+        $customer = Customer::find($customerId);
+
+        $customer->first_name = $request->get('first_name');
+        $customer->last_name = $request->get('last_name');
+        $customer->us_phone_number = $request->get('us_phone_number');
+        $customer->us_alternate_number = $request->get('us_alternate_phone_number');
+        $customer->indian_number = $request->get('indian_phone');
+        $customer->email = $request->get('email');
+        $customer->save();
+
+        $query->query_status = $request->get('query_status');
+        $query->query_date = $request->get('query_date');
+        $query->querytype = $request->get('query_type');
+        $query->bookingtype = $request->get('booking_type');
+        $query->origin = $request->get('origin');
+        $query->destination = $request->get('destination');
+        $query->departure_date = $request->get('departure_date');
+        $query->arrival_date = $request->get('arrival_date');
+        $query->passenger_details = $request->get('passengerdetails');
+        $query->bookingsource = $request->get('bookingsource');
+        $query->visastatus = $request->get('visa_status');
+        $query->airline = $request->get('airline');
+        $query->remarks = $serialized_object;
+        $query->save();
+
+        return redirect('queries')->with('success', 'Query updated!');
     }
 }
