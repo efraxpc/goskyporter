@@ -318,6 +318,7 @@ class QueryController extends Controller
     }
 
     public function edit($id){
+
         $query = Query::find($id);
 
         $querystatuses = QueryStatus::all();
@@ -349,13 +350,15 @@ class QueryController extends Controller
 
     public function update(Request $request)
     {
+        $request->validate([
+            'remarks' => 'required'
+        ]);
         foreach($request->get('remarks') as $key => $value){
             if($value)
             {
                 $remarks_array[] = $value;
             }
         }
-
         $convertedObj = $this->ToObject($remarks_array);
         $serialized_object = serialize($convertedObj);
 
@@ -373,18 +376,41 @@ class QueryController extends Controller
         $customer->email = $request->get('email');
         $customer->save();
 
-        $query->query_status = $request->get('query_status');
+        if($request->get('query_status'))
+        {
+            $query->query_status = $request->get('query_status');
+        }
+        if($request->get('booking_type'))
+        {
+            $query->bookingtype = $request->get('booking_type');
+        }
+        if($request->get('origin'))
+        {
+            $query->origin = $request->get('origin');
+
+        }
+        if($request->get('destination'))
+        {
+            $query->origin = $request->get('destination');
+
+        }
+        if($request->get('bookingsource'))
+        {
+            $query->bookingsource = $request->get('bookingsource');
+        }
+        if($request->get('visa_status'))
+        {
+            $query->visastatus = $request->get('visa_status');
+        }
+        if($request->get('airline'))
+        {
+            $query->airline = $request->get('airline');
+        }
         $query->query_date = $request->get('query_date');
         $query->querytype = $request->get('query_type');
-        $query->bookingtype = $request->get('booking_type');
-        $query->origin = $request->get('origin');
-        $query->destination = $request->get('destination');
         $query->departure_date = $request->get('departure_date');
         $query->arrival_date = $request->get('arrival_date');
         $query->passenger_details = $request->get('passengerdetails');
-        $query->bookingsource = $request->get('bookingsource');
-        $query->visastatus = $request->get('visa_status');
-        $query->airline = $request->get('airline');
         $query->remarks = $serialized_object;
         $query->save();
 

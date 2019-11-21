@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col-12">
             <hr>
-            <h3>Query information</h3>
+            <h3>Edit Query information</h3>
             <hr>
             <div>
                 @if ($errors->any())
@@ -16,6 +16,7 @@
                         </ul>
                     </div><br />
                 @endif
+                    <input type="hidden" id="user_role" value="{{Auth::user()->role }}">
                 <form method="post" action="{{ route('queries_update') }}">
                     @csrf
                     <input type="hidden" name="queryId" value="{{$queryId}}">
@@ -31,13 +32,13 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="first_name">Frist name:</label>
-                                        <input type="text" class="form-control" name="first_name" value="{{$customer->first_name}}" required />
+                                        <input type="text" class="form-control" name="first_name" value="{{$customer->first_name}}" required @if(Auth::user()->role == 3) readonly="true"@endif/>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="last_name">Last name:</label>
-                                        <input type="text" class="form-control" name="last_name" value="{{$customer->last_name}}" required />
+                                        <input type="text" class="form-control" name="last_name" value="{{$customer->last_name}}" required @if(Auth::user()->role == 3) readonly="true"@endif/>
                                     </div>
                                 </div>
                             </div>
@@ -45,13 +46,13 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="us_phone_number">US phone number:</label>
-                                        <input type="text" class="form-control" name="us_phone_number" value="{{$customer->us_phone_number}}" required />
+                                        <input type="text" class="form-control" name="us_phone_number" value="{{$customer->us_phone_number}}" required @if(Auth::user()->role == 3) readonly="true"@endif/>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="us_alternate_phone_number">US alternate phone number:</label>
-                                        <input type="text" class="form-control" name="us_alternate_phone_number" value="{{$customer->us_alternate_number}}" required />
+                                        <input type="text" class="form-control" name="us_alternate_phone_number" value="{{$customer->us_alternate_number}}" required @if(Auth::user()->role == 3) readonly="true"@endif/>
                                     </div>
                                 </div>
                             </div>
@@ -59,13 +60,13 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="indian_phone">Indian phone:</label>
-                                        <input type="text" class="form-control" name="indian_phone" value="{{$customer->indian_number}}" required />
+                                        <input type="text" class="form-control" name="indian_phone" value="{{$customer->indian_number}}" required @if(Auth::user()->role == 3) readonly="true"@endif/>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="email">Email:</label>
-                                        <input type="text" class="form-control" name="email" value="{{$customer->email}}" required />
+                                        <input type="text" class="form-control" name="email" value="{{$customer->email}}" required @if(Auth::user()->role == 3) readonly="true"@endif/>
                                     </div>
                                 </div>
                             </div>
@@ -83,7 +84,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="query_status">Query status:</label>
-                                        <select class="query_status" name="query_status" style="width: 100%" required >
+                                        <select class="query_status" name="query_status" style="width: 100%" required @if(Auth::user()->role == 3) readonly="true"@endif>
                                             <option value="">-- Select --</option>
                                             @foreach($querystatuses as $querystatus_var)
                                                 <option value="{{$querystatus_var->id}}" @if($query->query_status == $querystatus_var->id) selected @endif>{{$querystatus_var->name}}</option>
@@ -94,7 +95,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="query_date">Query date:</label>
-                                        <input type="date" class="form-control" name="query_date" value="{{ $query->query_date  }}" required >
+                                        <input type="date" class="form-control" name="query_date" value="{{ $query->query_date  }}" required @if(Auth::user()->role == 3) readonly="true"@endif>
                                     </div>
                                 </div>
                             </div>
@@ -102,7 +103,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="bookingsource">Sources/Referals:</label>
-                                        <select class="booking_source" name="bookingsource" style="width: 100%" value="{{ $query->bookingsource  }}">
+                                        <select class="booking_source" name="bookingsource" style="width: 100%" value="{{ $query->bookingsource  }}" @if(Auth::user()->role == 3) readonly="true"@endif>
                                             <option value="">-- Select --</option>
                                             @foreach($bookingsources as $bookingsource_var)
                                                 <option value="{{$bookingsource_var->id}}" @if($query->bookingsource == $bookingsource_var->id) selected @endif> {{$bookingsource_var->name}}</option>
@@ -113,7 +114,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="query_type">Query type:</label>
-                                        <select class="query_type" name="query_type" style="width: 100%" required>
+                                        <select class="query_type" name="query_type" style="width: 100%" required @if(Auth::user()->role == 3) readonly="true"@endif>
                                             <option value="">-- Select --</option>
                                             @foreach($querytypes as $querytype_var)
                                                 <option value="{{$querytype_var->id}}" @if($query->querytype == $querytype_var->id) selected @endif>{{$querytype_var->name}}</option>
@@ -126,7 +127,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="booking_type">Booking type:</label>
-                                        <select class="booking_type" name="booking_type" style="width: 100%" required>
+                                        <select class="booking_type" name="booking_type" style="width: 100%" required @if(Auth::user()->role == 3) readonly="true"@endif>
                                             <option value="">-- Select --</option>
                                             @foreach($bookingtypes as $bookingtype_var)
                                                 <option value="{{$bookingtype_var->id}}" @if($query->bookingtype == $bookingtype_var->id) selected @endif >{{$bookingtype_var->name}}</option>
@@ -149,7 +150,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="origin">Origin:</label>
-                                        <select class="origin" name="origin" style="width: 100%" required>
+                                        <select class="origin" name="origin" style="width: 100%" required >
                                             <option value="">-- Select --</option>
                                             @foreach($airports as $airport_var)
                                                 <option value="{{$airport_var->id}}" @if($query->origin == $airport_var->id) selected @endif >{{$airport_var->name}}</option>
@@ -160,7 +161,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="destination">Destination:</label>
-                                        <select class="destination" name="destination" style="width: 100%" required>
+                                        <select class="destination" name="destination" style="width: 100%" required @if(Auth::user()->role == 3) readonly="true"@endif>
                                             <option value="">-- Select --</option>
                                             @foreach($airports as $airport_var)
                                                 <option value="{{$airport_var->id}}" @if($query->destination == $airport_var->id) selected @endif >{{$airport_var->name}}</option>
@@ -173,13 +174,13 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="departure_date">Departure date:</label>
-                                        <input type="date" class="form-control" name="departure_date" value="{{$query->departure_date}}" required />
+                                        <input type="date" class="form-control" name="departure_date" value="{{$query->departure_date}}" required @if(Auth::user()->role == 3) readonly="true"@endif/>
                                     </div>
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="arrival_date">Arrival date:</label>
-                                        <input type="date" class="form-control" name="arrival_date" value="{{$query->arrival_date}}" required/>
+                                        <input type="date" class="form-control" name="arrival_date" value="{{$query->arrival_date}}" required @if(Auth::user()->role == 3) readonly="true"@endif/>
                                     </div>
                                 </div>
                             </div>
@@ -187,7 +188,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="visa_status">Visa status:</label>
-                                        <select class="visa_status" name="visa_status" style="width: 100%" required>
+                                        <select class="visa_status" name="visa_status" style="width: 100%" required @if(Auth::user()->role == 3) readonly="true"@endif>
                                             <option value="">-- Select --</option>
                                             @foreach($visastatuses as $visastatus_var)
                                                 <option value="{{$visastatus_var->id}}" @if($query->visastatus == $visastatus_var->id) selected @endif >{{$visastatus_var->status}}</option>
@@ -198,7 +199,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="airline">Airline preference:</label>
-                                        <select class="airline" name="airline" style="width: 100%"required>
+                                        <select class="airline" name="airline" style="width: 100%" required @if(Auth::user()->role == 3) readonly="true"@endif>
                                             <option value="">-- Select --</option>
                                             @foreach($airlines as $airline_var)
                                                 <option value="{{$airline_var->id}}" @if($query->airline == $airline_var->id) selected @endif >{{$airline_var->name}}</option>
@@ -222,7 +223,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="passengerdetails">Passenger details</label>
-                                        <textarea class="form-control" id="passengerdetails" name="passengerdetails" rows="3" >{{$query->passenger_details}}</textarea>
+                                        <textarea class="form-control" id="passengerdetails" name="passengerdetails" rows="3" @if(Auth::user()->role == 3) readonly="true"@endif>{{$query->passenger_details}}</textarea>
                                     </div>
                                 </div>
                                 <div class="col-6">
@@ -264,6 +265,18 @@
         $('.destination').select2();
         $('.visa_status').select2();
         $('.airline').select2();
+
+        if($('#user_role').val() == 3)
+        {
+            $(".booking_source").prop("disabled", true);
+            $(".query_type").prop("disabled", true);
+            $(".query_status").prop("disabled", true);
+            $(".booking_type").prop("disabled", true);
+            $(".origin").prop("disabled", true);
+            $(".destination").prop("disabled", true);
+            $(".visa_status").prop("disabled", true);
+            $(".airline").prop("disabled", true);
+        }
 
         var maxField = 10; //Input fields increment limitation
         var addButton = $('.add_button'); //Add button selector
