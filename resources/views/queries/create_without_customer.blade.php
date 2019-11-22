@@ -92,7 +92,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="query_date">Query date:</label>
-                                        <input type="date" class="form-control" name="query_date" id="query_date" value="{{ old('query_date') }}" required>
+                                        <input type="date" class="form-control" name="query_date" id="query_date" value="{{ old('query_date') }}" required readonly="true">
                                     </div>
                                 </div>
                             </div>

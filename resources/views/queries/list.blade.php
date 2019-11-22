@@ -20,6 +20,8 @@
                     <td class="text-center desktop mobile tablet">Customer</td>
                     <td class="text-center desktop ">Phone number</td>
                     <td class="text-center desktop">Remarks</td>
+                    <td class="text-center desktop">Query date</td>
+                    <td class="text-center desktop">Creared at</td>
                     <td class="text-center desktop mobile tablet">Handling by</td>
                     <td class="text-center desktop">Actions</td>
                 </tr>
@@ -89,6 +91,21 @@
             return false; // important: prevent the form from submitting
         });
 
+        function formatDate(date) {
+            var monthNames = [
+                "January", "February", "March",
+                "April", "May", "June", "July",
+                "August", "September", "October",
+                "November", "December"
+            ];
+
+            var day = date.getDate();
+            var monthIndex = date.getMonth();
+            var year = date.getFullYear();
+
+            return day + ' ' + monthNames[monthIndex] + ' ' + year;
+        }
+
         var SITEURL = '{{URL::to('')}}';
         $('#queries-table').DataTable({
             responsive: true,
@@ -96,11 +113,13 @@
             serverSide: true,
             index: SITEURL + "/queries/data",
             columns: [
-                { data: 'id', name: 'id', "visible": false, "searchable": false },
+                { data: 'id', name: 'id', "visible": true, "searchable": false },
                 { data: 'query_status', name: 'query_status' },
                 { data: 'user_name', name: 'user_name' },
                 { data: 'indian_number', name: 'indian_number' },
                 { data: 'remarks', name: 'remarks' },
+                { data: 'query_Date', name: 'query_Date' },
+                { data: 'created_at', name: 'created_at' },
                 { data: 'action', name: 'action', orderable: false, searchable: false }
             ],
             "columnDefs": [
@@ -136,11 +155,22 @@
                 {
                     "targets": 5,
                     "render": function (data, type, row, meta) {
-                        return '<p class="text-center">'+row.user_name+'</p>'
+                        return formatDate(new Date(row.query_date))
                     }
                 },
                 {
                     "targets": 6,
+                    "render": function (data, type, row, meta) {
+                        return formatDate(new Date(row.created_at))
+                    }
+                }, {
+                    "targets": 7,
+                    "render": function (data, type, row, meta) {
+                        return '<p class="text-center">'+row.user_name+'</p>'
+                    }
+                },
+                {
+                    "targets": 8,
                     "render": function (data, type, row, meta) {
                         return row.action
                     }

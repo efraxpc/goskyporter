@@ -37,6 +37,8 @@ class QueryController extends Controller
                 't2.data as destination_data',
                 'users.name as user_name',
                 'queries.remarks',
+                'queries.created_at',
+                'queries.query_date',
             ])
                 ->Join('query_statuses','query_statuses.id','=','queries.query_status')
                 ->Join('customers','customers.id','=','queries.customer')
