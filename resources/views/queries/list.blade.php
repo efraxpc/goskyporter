@@ -164,6 +164,8 @@
                 {
                     "targets": 6,
                     "render": function (data, type, row, meta) {
+                        m = moment(row.query_date, 'YYYY-MM-DD')
+                        console.log(m)
                         return formatDate(new Date(row.query_date))
                     }
                 },

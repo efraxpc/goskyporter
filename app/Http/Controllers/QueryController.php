@@ -61,8 +61,8 @@ class QueryController extends Controller
                 ->addColumn('action', function ($query) {
                     return '<div class="text-center">
                     <a href="#" class="del_ btn btn-xs btn-success" data-id='.$query->id.'>Add Remark</a> 
-                    <a href="/queries/edit/'.$query->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-                    <a href="/queries/'.$query->id.'" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-eye"></i> View</a>
+                    <a href="/queries/edit/'.$query->id.'"><i class="far fa-edit fa-2x"></i></a>
+                    <a href="/queries/'.$query->id.'"><i class="fas fa-eye fa-2x"></i></a>
                     </div>';
                 })
                 ->make(true);
@@ -72,10 +72,10 @@ class QueryController extends Controller
                 $response = Datatables::of($queries)
                     ->addColumn('action', function ($query) {
                         return '<div class="text-center">
-                            <a href="#" class="del_ btn btn-xs btn-success" data-id='.$query->id.'>Add Remark</a>
-                            <a href="/queries/'.$query->id.'" class="btn btn-xs btn-info"><i class="glyphicon glyphicon-eye"></i> View</a>
-                            <a href="/queries/edit/'.$query->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Edit</a>
-                            <a href="/queries/delete/'.$query->id.'" class="btn btn-xs btn-danger m-2"><i class="glyphicon glyphicon-edit"></i> Delete</a>
+                            <a href="#" class="del_" data-id='.$query->id.'><i class="fas fa-plus-circle fa-2x"></i></a>
+                            <a href="/queries/'.$query->id.'"><i class="fas fa-eye fa-2x"></i></a>
+                            <a href="/queries/edit/'.$query->id.'"><i class="far fa-edit fa-2x"></i></a>
+                            <a href="/queries/delete/'.$query->id.'"><i class="far fa-trash-alt fa-2x"></i></a>
                         </div>';
                     })
                     ->make(true);

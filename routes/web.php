@@ -39,3 +39,6 @@ Route::get('/queries/edit/{id}', 'QueryController@edit')->name('queries_edit');
 Route::post('/queries/update', 'QueryController@update')->name('queries_update');
 Route::get('/queries/{id}', 'QueryController@view')->name('queries_view');
 Route::post('/save/remark', 'QueryController@saveRemark')->name('save_remark');
+
+
+Route::get('/reports', 'ReportController@index')->name('reports.index');

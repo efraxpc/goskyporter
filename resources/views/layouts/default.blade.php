@@ -207,6 +207,10 @@
                             <a class='sidebar-link' href="{{ route('querystatuses.index') }}"><i
                                     class="fas fa-shield-alt"></i> Query Statuses</a>
                         </li>
+                        <li>
+                            <a class='sidebar-link' href="{{ route('reports.index') }}"><i
+                                    class="fas fa-print"></i> Reports</a>
+                        </li>
                     </ul>
                 </li>
             </ul>
@@ -252,6 +256,8 @@
                                     class="fas fa-bookmark"></i> Booking Types</a>
                             <a class='dropdown-item' href="{{ route('querystatuses.index') }}"><i
                                     class="fas fa-shield-alt"></i> Query Statuses</a>
+                            <a class='dropdown-item' href="{{ route('reports.index') }}"><i
+                                    class="fas fa-print"></i> Reports</a>
                         </div>
                     </li>
                 </ul>
@@ -308,6 +314,8 @@
 <script src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 <script type="text/javascript"
         src="https://cdn.datatables.net/responsive/2.2.3/js/dataTables.responsive.min.js"></script>
+<script type="text/javascript"
+        src="https://momentjs.com/downloads/moment.min.js"></script>
 <script>
     $(document).ready(function () {
         $(".click_info_icon").click(function () {
