@@ -228,7 +228,7 @@
                                         <label for="destination">Remarks:</label>
                                         <div class="field_wrapper">
                                             <div>
-                                                <input type="text" class="form-control" name="remarks[]" value=""/>
+                                                <input type="text" class="form-control" name="remarks[]" value="" required="true"/>
                                                 <a href="javascript:void(0);" class="add_button" title="Add field"><i class="fas fa-plus-square" style="color:green"></i></a>
                                             </div>
                                         </div>

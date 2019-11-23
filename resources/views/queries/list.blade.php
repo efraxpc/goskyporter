@@ -18,10 +18,10 @@
                     <td>ID</td>
                     <td class="text-center desktop mobile tablet">Status</td>
                     <td class="text-center desktop mobile tablet">Customer</td>
+                    <td class="text-center desktop mobile tablet">Email</td>
                     <td class="text-center desktop ">Phone number</td>
                     <td class="text-center desktop">Remarks</td>
                     <td class="text-center desktop">Query date</td>
-                    <td class="text-center desktop">Creared at</td>
                     <td class="text-center desktop mobile tablet">Handling by</td>
                     <td class="text-center desktop">Actions</td>
                 </tr>
@@ -113,14 +113,17 @@
             serverSide: true,
             index: SITEURL + "/queries/data",
             columns: [
-                { data: 'id', name: 'id', "visible": true, "searchable": false },
+                { data: 'id', name: 'id', "visible": true, searchable: false },
                 { data: 'query_status', name: 'query_status' },
-                { data: 'user_name', name: 'user_name' },
-                { data: 'indian_number', name: 'indian_number' },
+                { data: 'user_name', name: 'user_name', searchable: true },
+                { data: 'email', name: 'email', searchable: true },
+                { data: 'indian_number', name: 'indian_number', searchable: true },
                 { data: 'remarks', name: 'remarks' },
                 { data: 'query_Date', name: 'query_Date' },
-                { data: 'created_at', name: 'created_at' },
-                { data: 'action', name: 'action', orderable: false, searchable: false }
+                { data: 'query_Date', name: 'query_Date' },
+                { data: 'action', name: 'action', orderable: false, searchable: false },
+                { data: 'first_name', name: 'first_name',"visible": false, },
+                { data: 'last_name', name: 'last_name', "visible": false, },
             ],
             "columnDefs": [
                 {
@@ -144,6 +147,12 @@
                 {
                     "targets": 4,
                     "render": function (data, type, row, meta) {
+                        return '<p class="text-center">'+row.email+'</p>'
+                    }
+                },
+                {
+                    "targets": 5,
+                    "render": function (data, type, row, meta) {
                         str = '<div class="text-center"><ul style="list-style: none;">'
                         row.remarks.forEach(function(slide) {
                             str += '<li>'+ slide + '</li>';
@@ -153,17 +162,12 @@
                     }
                 },
                 {
-                    "targets": 5,
+                    "targets": 6,
                     "render": function (data, type, row, meta) {
                         return formatDate(new Date(row.query_date))
                     }
                 },
                 {
-                    "targets": 6,
-                    "render": function (data, type, row, meta) {
-                        return formatDate(new Date(row.created_at))
-                    }
-                }, {
                     "targets": 7,
                     "render": function (data, type, row, meta) {
                         return '<p class="text-center">'+row.user_name+'</p>'

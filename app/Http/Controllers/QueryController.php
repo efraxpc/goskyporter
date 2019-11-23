@@ -30,6 +30,7 @@ class QueryController extends Controller
                 'customers.first_name',
                 'customers.last_name',
                 'customers.indian_number',
+                'customers.email',
                 'queries.created_at',
                 't1.name as origin',
                 't1.data as origin_data',
