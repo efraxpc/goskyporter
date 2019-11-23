@@ -136,7 +136,15 @@
 
             <!-- ### $Sidebar Menu ### -->
             <ul class="sidebar-menu scrollable pos-r">
-                <li class="nav-item mT-30 actived">
+                <li class="nav-item mT-30">
+                    <a class="sidebar-link" href="{{ route('home') }}">
+                        <span class="icon-holder">
+                            <i class="fas fa-columns"></i>
+                        </span>
+                        <span class="title">Dashboard</span>
+                    </a>
+                </li>
+                <li class="nav-item">
                     <a class="sidebar-link" href="{{ route('query_create_home') }}">
                         <span class="icon-holder">
                           <i class="far fa-plus-square"></i>
