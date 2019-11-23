@@ -224,7 +224,7 @@
                            aria-haspopup="true" aria-expanded="false">Options</a>
                         <div class="dropdown-menu">
                             <a class='dropdown-item' href="{{ route('home') }}"><i class="fas fa-columns"></i>
-                                New Query</a>
+                                Dashboard</a>
                             <a class='dropdown-item' href="{{ route('query_create_home') }}"><i class="fas fa-plus"></i>
                                 New Query</a>
                             <a class='dropdown-item' href="{{ route('queries') }}"><i
