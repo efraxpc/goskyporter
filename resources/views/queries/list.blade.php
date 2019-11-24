@@ -154,8 +154,10 @@
                     "targets": 5,
                     "render": function (data, type, row, meta) {
                         str = '<div class="text-center"><ul style="list-style: none;">'
+                        var counter = 1
                         row.remarks.forEach(function(slide) {
-                            str += '<li>'+ slide + '</li>';
+                            str += '<li>'+ counter+ '. ' +slide + '</li>';
+                            counter++
                         });
                         str += '</ul></div>';
                         return str
