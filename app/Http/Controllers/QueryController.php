@@ -60,7 +60,7 @@ class QueryController extends Controller
             $response =  Datatables::of($queries)
                 ->addColumn('action', function ($query) {
                     return '<div class="text-center">
-                    <a href="#" class="del_ btn btn-xs btn-success" data-id='.$query->id.'>Add Remark</a> 
+                    <a href="#" class="del_" data-id='.$query->id.'><i class="fas fa-plus-circle fa-2x"></i></a> 
                     <a href="/queries/edit/'.$query->id.'"><i class="far fa-edit fa-2x"></i></a>
                     <a href="/queries/'.$query->id.'"><i class="fas fa-eye fa-2x"></i></a>
                     </div>';

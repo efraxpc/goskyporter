@@ -164,8 +164,9 @@
                 {
                     "targets": 6,
                     "render": function (data, type, row, meta) {
-                        m = moment(row.query_date, 'YYYY-MM-DD')
-                        console.log(m)
+                        let current_datetime = new Date()
+                        let formatted_date = current_datetime.getDate() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getFullYear()
+                        console.log(formatted_date)
                         return formatDate(new Date(row.query_date))
                     }
                 },
