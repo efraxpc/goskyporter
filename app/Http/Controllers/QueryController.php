@@ -320,8 +320,8 @@ class QueryController extends Controller
         ]);
     }
 
-    public function edit($id){
-
+    public function edit($id)
+    {
         $query = Query::find($id);
 
         $querystatuses = QueryStatus::all();
