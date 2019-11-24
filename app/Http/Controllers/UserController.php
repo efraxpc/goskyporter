@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Logo;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -11,6 +12,8 @@ class UserController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $logo = Logo::find(1);
+        $this->path = asset('storage/images').'/'.$logo->path;
     }
     /**
      * Display a listing of the resource.
@@ -20,8 +23,8 @@ class UserController extends Controller
     public function index()
     {
         $users = User::all();
-
-        return view('users.index', compact('users'));
+        $path = $this->path;
+        return view('users.index', compact('users','path'));
     }
 
     /**
@@ -31,7 +34,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        return view('users.create');
+        $path = $this->path;
+        return view('users.create',compact('path'));
     }
 
     /**
@@ -77,7 +81,8 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        return view('users.edit', compact('user'));
+        $path = $this->path;
+        return view('users.edit',compact('user','path'));
     }
 
     /**
@@ -92,13 +97,11 @@ class UserController extends Controller
         $request->validate([
             'name' => 'required',
             'email' => 'required',
-            'role' => 'required',
         ]);
 
         $user = User::find($id);
         $user->name = $request->get('name');
         $user->email = $request->get('email');
-        $user->role = 3;
         $user->save();
 
         return redirect('/users')->with('success', 'User updated!');

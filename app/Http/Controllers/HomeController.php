@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Logo;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -23,6 +24,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.home');
+        $logo = Logo::find(1);
+        $path = asset('storage/images').'/'.$logo->path;
+        return view('pages.home', compact('path'));
     }
 }

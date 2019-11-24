@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Logo;
 use App\QueryStatus;
 use Illuminate\Http\Request;
 
@@ -10,6 +11,8 @@ class QueryStatusController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $logo = Logo::find(1);
+        $this->path = asset('storage/images').'/'.$logo->path;
     }
     /**
      * Display a listing of the resource.
@@ -19,8 +22,8 @@ class QueryStatusController extends Controller
     public function index()
     {
         $querystatuses = QueryStatus::all();
-
-        return view('querystatuses.index', compact('querystatuses'));
+        $path = $this->path;
+        return view('querystatuses.index', compact('querystatuses','path'));
     }
 
     /**
@@ -30,7 +33,8 @@ class QueryStatusController extends Controller
      */
     public function create()
     {
-        return view('querystatuses.create');
+        $path = $this->path;
+        return view('querystatuses.create',compact('path'));
     }
 
     /**
@@ -72,7 +76,10 @@ class QueryStatusController extends Controller
     public function edit($id)
     {
         $querystatus = QueryStatus::find($id);
-        return view('querystatuses.edit', compact('querystatus'));
+
+        $path = $this->path;
+        return view('querystatuses.edit',compact('querystatus','path'));
+
     }
 
     /**

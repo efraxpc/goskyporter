@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Airline;
+use App\Logo;
 use Illuminate\Http\Request;
 
 class AirlineController extends Controller
@@ -10,6 +11,8 @@ class AirlineController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $logo = Logo::find(1);
+        $this->path = asset('storage/images').'/'.$logo->path;
     }
     /**
      * Display a listing of the resource.
@@ -19,8 +22,8 @@ class AirlineController extends Controller
     public function index()
     {
         $airlines = Airline::all();
-
-        return view('airlines.index', compact('airlines'));
+        $path = $this->path;
+        return view('airlines.index', compact('airlines','path'));
     }
 
     /**
@@ -30,7 +33,8 @@ class AirlineController extends Controller
      */
     public function create()
     {
-        return view('airlines.create');
+        $path = $this->path;
+        return view('airlines.create',compact('path'));
     }
 
     /**
@@ -72,7 +76,8 @@ class AirlineController extends Controller
     public function edit($id)
     {
         $airline = Airline::find($id);
-        return view('airlines.edit', compact('airline'));
+        $path = $this->path;
+        return view('airlines.edit', compact('airline','path'));
     }
 
     /**

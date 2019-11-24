@@ -114,7 +114,7 @@
                             <div class="peers ai-c fxw-nw">
                                 <div class="peer">
                                     <div class="logo">
-                                        <img src="{{ asset('static/images/Book-flights.png') }}" alt=""
+                                        <img src="{{ $path }}" alt=""
                                              style="max-height: 56px;">
                                     </div>
                                 </div>

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Airline;
 use App\Airport;
+use App\Logo;
 use Illuminate\Http\Request;
 
 class AirportController extends Controller
@@ -11,6 +12,8 @@ class AirportController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $logo = Logo::find(1);
+        $this->path = asset('storage/images').'/'.$logo->path;
     }
     /**
      * Display a listing of the resource.
@@ -20,7 +23,8 @@ class AirportController extends Controller
     public function index()
     {
         $airports = Airport::all();
-        return view('airports.index', compact('airports'));
+        $path = $this->path;
+        return view('airports.index', compact('airports','path'));
     }
 
     /**
@@ -30,7 +34,8 @@ class AirportController extends Controller
      */
     public function create()
     {
-        return view('airports.create');
+        $path = $this->path;
+        return view('airports.create',compact('path'));
     }
 
     /**
@@ -74,7 +79,8 @@ class AirportController extends Controller
     public function edit($id)
     {
         $airport = Airport::find($id);
-        return view('airports.edit', compact('airport'));
+        $path = $this->path;
+        return view('airports.edit', compact('airport','path'));
     }
 
     /**

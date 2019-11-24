@@ -2,6 +2,7 @@
 namespace App\Http\Controllers;
 
 use App\BookingType;
+use App\Logo;
 use Illuminate\Http\Request;
 
 class BookingTypeController extends Controller
@@ -9,6 +10,8 @@ class BookingTypeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $logo = Logo::find(1);
+        $this->path = asset('storage/images').'/'.$logo->path;
     }
     /**
      * Display a listing of the resource.
@@ -19,7 +22,8 @@ class BookingTypeController extends Controller
     {
         $bookingtypes = BookingType::all();
 
-        return view('bookingtypes.index', compact('bookingtypes'));
+        $path = $this->path;
+        return view('bookingtypes.index', compact('bookingtypes','path'));
     }
 
     /**
@@ -29,7 +33,8 @@ class BookingTypeController extends Controller
      */
     public function create()
     {
-        return view('bookingtypes.create');
+        $path = $this->path;
+        return view('bookingtypes.create',compact('path'));
     }
 
     /**
@@ -71,8 +76,9 @@ class BookingTypeController extends Controller
     public function edit($id)
     {
         $bookingtype = BookingType::find($id);
-        //dd($bookingtype);
-        return view('bookingtypes.edit', compact('bookingtype'));
+
+        $path = $this->path;
+        return view('bookingtypes.edit', compact('bookingtype','path'));
     }
 
     /**

@@ -7,6 +7,7 @@ use App\Airport;
 use App\BookingSource;
 use App\BookingType;
 use App\Customer;
+use App\Logo;
 use App\Query;
 use App\QueryStatus;
 use App\QueryType;
@@ -20,6 +21,8 @@ class QueryController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $logo = Logo::find(1);
+        $this->path = asset('storage/images').'/'.$logo->path;
     }
     public function getIndex()
     {
@@ -83,11 +86,14 @@ class QueryController extends Controller
 
             return $response;
         }
-        return view('queries.list');
+
+        $path = $this->path;
+        return view('queries.list', compact('path'));
     }
     public function create_home()
     {
-        return view('queries.create_home');
+        $path = $this->path;
+        return view('queries.create_home',compact('path'));
     }
     public function create_without_customer()
     {
@@ -99,13 +105,16 @@ class QueryController extends Controller
         $visastatuses = VisaStatus::all();
         $airlines = Airline::all();
 
+        $path = $this->path;
+
         return view('queries.create_without_customer', compact('querystatuses',
         'bookingsources',
         'bookingtypes',
         'querytypes',
         'airports',
         'visastatuses',
-        'airlines'
+        'airlines',
+        'path'
         ));
     }
 
@@ -226,7 +235,9 @@ class QueryController extends Controller
                 })
                 ->make(true);
         }
-        return view('queries.create_with_customer_index');
+
+        $path = $this->path;
+        return view('queries.create_with_customer_index', compact('path'));
     }
 
     public function create_with_customer($customerId)
@@ -239,6 +250,8 @@ class QueryController extends Controller
         $visastatuses = VisaStatus::all();
         $airlines = Airline::all();
 
+        $path = $this->path;
+
         return view('queries.create_with_customer', compact('querystatuses',
             'bookingsources',
             'bookingtypes',
@@ -246,7 +259,8 @@ class QueryController extends Controller
             'airports',
             'visastatuses',
             'airlines',
-            'customerId'
+            'customerId',
+        'path'
         ));
     }
 
@@ -289,6 +303,8 @@ class QueryController extends Controller
 
         $customer = Customer::find($query->customer);
 
+        $path = $this->path;
+
         return view('queries.view', compact('querystatuses',
             'bookingsources',
             'bookingtypes',
@@ -298,7 +314,8 @@ class QueryController extends Controller
             'airlines',
             'query',
             'customer',
-            'remarks'
+            'remarks',
+        'path'
         ));
     }
     public function saveRemark(Request $request)
@@ -337,6 +354,7 @@ class QueryController extends Controller
         $customer = Customer::find($query->customer);
 
         $queryId = $id;
+        $path = $this->path;
         return view('queries.edit', compact('querystatuses',
             'bookingsources',
             'bookingtypes',
@@ -347,7 +365,8 @@ class QueryController extends Controller
             'query',
             'customer',
             'queryId',
-            'remarks'
+            'remarks',
+        'path'
         ));
     }
 

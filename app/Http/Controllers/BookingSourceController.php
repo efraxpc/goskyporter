@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\BookingSource;
+use App\Logo;
 use Illuminate\Http\Request;
 
 class BookingSourceController extends Controller
@@ -10,6 +11,8 @@ class BookingSourceController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $logo = Logo::find(1);
+        $this->path = asset('storage/images').'/'.$logo->path;
     }
     /**
      * Display a listing of the resource.
@@ -19,7 +22,8 @@ class BookingSourceController extends Controller
     public function index()
     {
         $bookingsources = BookingSource::all();
-        return view('bookingsources.index', compact('bookingsources'));
+        $path = $this->path;
+        return view('bookingsources.index', compact('bookingsources','path'));
     }
 
     /**
@@ -29,7 +33,8 @@ class BookingSourceController extends Controller
      */
     public function create()
     {
-        return view('bookingsources.create');
+        $path = $this->path;
+        return view('bookingsources.create',compact('path'));
     }
 
     /**
@@ -71,7 +76,8 @@ class BookingSourceController extends Controller
     public function edit($id)
     {
         $bookingsource = BookingSource::find($id);
-        return view('bookingsources.edit', compact('bookingsource'));
+        $path = $this->path;
+        return view('bookingsources.edit', compact('bookingsource','path'));
     }
 
     /**

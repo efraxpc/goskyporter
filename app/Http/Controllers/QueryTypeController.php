@@ -1,6 +1,7 @@
 <?php
 namespace App\Http\Controllers;
 
+use App\Logo;
 use App\QueryType;
 use Illuminate\Http\Request;
 
@@ -9,6 +10,8 @@ class QueryTypeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $logo = Logo::find(1);
+        $this->path = asset('storage/images').'/'.$logo->path;
     }
     /**
      * Display a listing of the resource.
@@ -19,7 +22,8 @@ class QueryTypeController extends Controller
     {
         $querytypes = QueryType::all();
 
-        return view('querytypes.index', compact('querytypes'));
+        $path = $this->path;
+        return view('querytypes.index', compact('querytypes','path'));
     }
 
     /**
@@ -29,7 +33,8 @@ class QueryTypeController extends Controller
      */
     public function create()
     {
-        return view('querytypes.create');
+        $path = $this->path;
+        return view('querytypes.create',compact('path'));
     }
 
     /**
@@ -71,7 +76,8 @@ class QueryTypeController extends Controller
     public function edit($id)
     {
         $querytype = QueryType::find($id);
-        return view('querytypes.edit', compact('querytype'));
+        $path = $this->path;
+        return view('querytypes.edit',compact('querytype','path'));
     }
 
     /**

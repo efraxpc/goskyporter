@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Logo;
 use App\VisaStatus;
 use Illuminate\Http\Request;
 
@@ -10,6 +11,8 @@ class VisaStatusController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $logo = Logo::find(1);
+        $this->path = asset('storage/images').'/'.$logo->path;
     }
     /**
      * Display a listing of the resource.
@@ -19,7 +22,8 @@ class VisaStatusController extends Controller
     public function index()
     {
         $visastatus = VisaStatus::all();
-        return view('visastatus.index', compact('visastatus'));
+        $path = $this->path;
+        return view('visastatus.index', compact('visastatus','path'));
     }
 
     /**
@@ -29,7 +33,8 @@ class VisaStatusController extends Controller
      */
     public function create()
     {
-        return view('visastatus.create');
+        $path = $this->path;
+        return view('visastatus.create',compact('path'));
     }
 
     /**
@@ -71,7 +76,8 @@ class VisaStatusController extends Controller
     public function edit($id)
     {
         $visastatus = VisaStatus::find($id);
-        return view('visastatus.edit', compact('visastatus'));
+        $path = $this->path;
+        return view('visastatus.edit',compact('visastatus','path'));
     }
 
     /**

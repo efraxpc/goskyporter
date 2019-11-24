@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Customer;
 use App\Exports\CustomersExport;
+use App\Logo;
 use App\Query;
 use Illuminate\Http\Request;
 use App\Exports\QueriesExport;
@@ -14,6 +15,8 @@ class ReportController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+        $logo = Logo::find(1);
+        $this->path = asset('storage/images').'/'.$logo->path;
     }
     /**
      * Display a listing of the resource.
@@ -22,7 +25,8 @@ class ReportController extends Controller
      */
     public function index()
     {
-        return view('reports.index');
+        $path = $this->path;
+        return view('reports.index', compact('path'));
     }
 
     public function exportQueries(Request $request)
@@ -79,7 +83,7 @@ class ReportController extends Controller
             ->orderBy('id')
             ->groupBy('customers.id')
             ->get();
-//dd($customers);
+
         if(count($customers) == 0)
         {
             return redirect('/reports')->with('error', 'Could not find data requested!');
