@@ -213,6 +213,11 @@
                                     class="fas fa-print"></i> Reports</a>
                         </li>
                         @endif
+                        @if (Auth::user()->role == 2)
+                            <li>
+                                <a class='sidebar-link' href="{{ route('logo.index') }}"><i class="fas fa-image"></i> Logo</a>
+                            </li>
+                        @endif
                     </ul>
                 </li>
             </ul>
@@ -261,6 +266,9 @@
                             @if (Auth::user()->role == 2)
                             <a class='dropdown-item' href="{{ route('reports.index') }}"><i
                                     class="fas fa-print"></i> Reports</a>
+                            @endif
+                            @if (Auth::user()->role == 2)
+                            <a class='dropdown-item' href="{{ route('logo.index') }}"><i class="fas fa-image"></i> Logo</a>
                             @endif
                         </div>
                     </li>

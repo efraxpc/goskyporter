@@ -40,7 +40,9 @@ Route::post('/queries/update', 'QueryController@update')->name('queries_update')
 Route::get('/queries/{id}', 'QueryController@view')->name('queries_view');
 Route::post('/save/remark', 'QueryController@saveRemark')->name('save_remark');
 
-
 Route::get('/reports', 'ReportController@index')->name('reports.index');
 Route::get('/reports-generate-queries', 'ReportController@exportQueries')->name('reports.generate.queries');
 Route::get('/reports-generate-customers', 'ReportController@exportCustomers')->name('reports.generate.customers');
+
+Route::get('/logo', 'LogoController@index')->name('logo.index');
+Route::post('/logo', 'LogoController@save')->name('logo.save');

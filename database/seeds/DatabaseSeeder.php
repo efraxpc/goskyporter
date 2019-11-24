@@ -20,5 +20,6 @@ class DatabaseSeeder extends Seeder
         $this->call(QueryTypeTableSeeder::class);
         $this->call(UsersTableSeeder::class);
         $this->call(VisaStatusTableSeeder::class);
+        $this->call(LogoSeeder::class);
     }
 }
