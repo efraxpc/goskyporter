@@ -207,10 +207,12 @@
                             <a class='sidebar-link' href="{{ route('querystatuses.index') }}"><i
                                     class="fas fa-shield-alt"></i> Query Statuses</a>
                         </li>
+                        @if (Auth::user()->role === 2)
                         <li>
                             <a class='sidebar-link' href="{{ route('reports.index') }}"><i
                                     class="fas fa-print"></i> Reports</a>
                         </li>
+                        @endif
                     </ul>
                 </li>
             </ul>
@@ -256,8 +258,10 @@
                                     class="fas fa-bookmark"></i> Booking Types</a>
                             <a class='dropdown-item' href="{{ route('querystatuses.index') }}"><i
                                     class="fas fa-shield-alt"></i> Query Statuses</a>
+                            @if (Auth::user()->role === 2)
                             <a class='dropdown-item' href="{{ route('reports.index') }}"><i
                                     class="fas fa-print"></i> Reports</a>
+                            @endif
                         </div>
                     </li>
                 </ul>

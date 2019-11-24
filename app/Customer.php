@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Customer extends Model
 {
+    protected $dates = ['created_at'];
     protected $fillable = [
         'first_name',
         'last_name',

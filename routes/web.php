@@ -42,3 +42,5 @@ Route::post('/save/remark', 'QueryController@saveRemark')->name('save_remark');
 
 
 Route::get('/reports', 'ReportController@index')->name('reports.index');
+Route::get('/reports-generate-queries', 'ReportController@exportQueries')->name('reports.generate.queries');
+Route::get('/reports-generate-customers', 'ReportController@exportCustomers')->name('reports.generate.customers');

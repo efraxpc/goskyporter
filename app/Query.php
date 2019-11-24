@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Query extends Model
 {
+    protected $dates = ['query_date'];
     protected $fillable = [
         'query_status',
         'bookingsource',
