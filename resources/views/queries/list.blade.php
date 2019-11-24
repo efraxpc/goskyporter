@@ -164,10 +164,19 @@
                 {
                     "targets": 6,
                     "render": function (data, type, row, meta) {
-                        let current_datetime = new Date()
-                        let formatted_date = current_datetime.getDate() + "-" + (current_datetime.getMonth() + 1) + "-" + current_datetime.getFullYear()
-                        console.log(formatted_date)
-                        return formatDate(new Date(row.query_date))
+                        Number.prototype.padLeft = function(base,chr){
+                            var  len = (String(base || 10).length - String(this).length)+1;
+                            return len > 0? new Array(len).join(chr || '0')+this : this;
+                        }
+                        var d = new Date(row.query_date),
+                            dformat = [ (d.getMonth()+1).padLeft(),
+                                    d.getDate().padLeft(),
+                                    d.getFullYear()].join('/')+
+                                ' ' +
+                                [ d.getHours().padLeft(),
+                                    d.getMinutes().padLeft(),
+                                    d.getSeconds().padLeft()].join(':');
+                        return dformat
                     }
                 },
                 {

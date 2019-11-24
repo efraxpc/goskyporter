@@ -27,9 +27,9 @@ class CreateQueriesTable extends Migration
             $table->integer('querytype');
             $table->integer('visastatus');
             $table->integer('airline');
-            $table->date('query_date');
-            $table->date('departure_date');
-            $table->date('arrival_date');
+            $table->dateTime('query_date');
+            $table->dateTime('departure_date');
+            $table->dateTime('arrival_date');
             $table->text('passenger_details');
             $table->timestamps();
         });
