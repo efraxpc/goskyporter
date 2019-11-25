@@ -46,3 +46,6 @@ Route::get('/reports-generate-customers', 'ReportController@exportCustomers')->n
 
 Route::get('/logo', 'LogoController@index')->name('logo.index');
 Route::post('/logo', 'LogoController@save')->name('logo.save');
+
+Route::get('/queries/filter/{value}', 'QueryController@getIndex')->name('queries.general_search');
+Route::post('/find/query', 'QueryController@find')->name('find_query');

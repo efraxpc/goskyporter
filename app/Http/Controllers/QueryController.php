@@ -24,7 +24,7 @@ class QueryController extends Controller
         $logo = Logo::find(1);
         $this->path = asset('storage/images').'/'.$logo->path;
     }
-    public function getIndex()
+    public function getIndex(Request $request)
     {
         if(request()->ajax()) {
             $queries = Query::select([
@@ -52,6 +52,40 @@ class QueryController extends Controller
                 ->orderBy('id')
                 ->groupBy('queries.id')
                 ->get();
+
+            if($request->value)
+            {
+                $queries = Query::select([
+                    'queries.id',
+                    'query_statuses.name as query_status',
+                    'customers.first_name',
+                    'customers.last_name',
+                    'customers.indian_number',
+                    'customers.email',
+                    'queries.created_at',
+                    't1.name as origin',
+                    't1.data as origin_data',
+                    't2.name as destination',
+                    't2.data as destination_data',
+                    'users.name as user_name',
+                    'queries.remarks',
+                    'queries.created_at',
+                    'queries.query_date',
+                ])
+                    ->Join('query_statuses','query_statuses.id','=','queries.query_status')
+                    ->Join('customers','customers.id','=','queries.customer')
+                    ->Join('users','users.id','=','queries.user_loggedin')
+                    ->Join('airports as t1','t1.id','=','queries.origin')
+                    ->Join('airports as t2','t2.id','=','queries.destination')
+                    ->Where('customers.first_name', 'like', '%' . $request->value . '%')
+                    ->orWhere('customers.last_name', 'like', '%' . $request->value . '%')
+                    ->orWhere('customers.indian_number', 'like', '%' . $request->value . '%')
+                    ->orWhere('query_statuses.name', 'like', '%' . $request->value . '%')
+                    ->orderBy('id')
+                    ->groupBy('queries.id')
+                    ->get();
+            }
+
 
             foreach ($queries as $query) {
                 $remarks = unserialize($query->remarks);
@@ -86,8 +120,9 @@ class QueryController extends Controller
 
             return $response;
         }
-
         $path = $this->path;
+
+
         return view('queries.list', compact('path'));
     }
     public function create_home()
@@ -437,5 +472,11 @@ class QueryController extends Controller
         $query->save();
 
         return redirect('queries')->with('success', 'Query updated!');
+    }
+
+    public function find(Request $request)
+    {
+        $path = $this->path;
+        return redirect('/queries/filter/'.$request->value_to_find)->with('path', $path)->with('valueToFind', $request->value_to_find);
     }
 }

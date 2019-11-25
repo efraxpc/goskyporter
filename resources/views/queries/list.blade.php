@@ -107,7 +107,7 @@
         }
 
         var SITEURL = '{{URL::to('')}}';
-        $('#queries-table').DataTable({
+        var table = $('#queries-table').DataTable({
             responsive: true,
             processing: true,
             serverSide: true,
@@ -196,6 +196,8 @@
             ],
             order: [[0, 'desc']]
         });
+
+
 
     </script>
 
