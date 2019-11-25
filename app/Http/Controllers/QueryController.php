@@ -53,6 +53,8 @@ class QueryController extends Controller
                 ->groupBy('queries.id')
                 ->get();
 
+
+
             if($request->value)
             {
                 $queries = Query::select([
@@ -81,6 +83,7 @@ class QueryController extends Controller
                     ->orWhere('customers.last_name', 'like', '%' . $request->value . '%')
                     ->orWhere('customers.indian_number', 'like', '%' . $request->value . '%')
                     ->orWhere('query_statuses.name', 'like', '%' . $request->value . '%')
+                    ->orWhere('users.name', 'like', '%' . $request->value . '%')
                     ->orderBy('id')
                     ->groupBy('queries.id')
                     ->get();

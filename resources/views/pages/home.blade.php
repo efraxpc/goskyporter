@@ -6,7 +6,7 @@
         <div class="form-row align-items-center">
             <div class="col-10">
                 <div class="input-group input-group-lg">
-                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" name="value_to_find" >
+                    <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-lg" name="value_to_find" required>
                 </div>
             </div>
             <div class="col-2">
