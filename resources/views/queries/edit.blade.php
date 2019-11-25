@@ -95,8 +95,9 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="query_date">Query date:</label>
-                                        <input type="date" class="form-control" name="query_date" value="{{ $query->query_date  }}" required @if(Auth::user()->role == 3) readonly="true"@endif>
+                                        <input type="date" class="form-control" name="query_date" value="{{ date('Y-m-d',strtotime($query->query_date)) }}" required @if(Auth::user()->role == 3) readonly="true"@endif>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="row">
@@ -174,14 +175,16 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="departure_date">Departure date:</label>
-                                        <input type="date" class="form-control" name="departure_date" value="{{$query->departure_date}}" required @if(Auth::user()->role == 3) readonly="true"@endif/>
+                                        <input type="date" class="form-control" name="departure_date" value="{{ date('Y-m-d',strtotime($query->departure_date)) }}" required @if(Auth::user()->role == 3) readonly="true"@endif/>
                                     </div>
+
                                 </div>
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="arrival_date">Arrival date:</label>
-                                        <input type="date" class="form-control" name="arrival_date" value="{{$query->arrival_date}}" required @if(Auth::user()->role == 3) readonly="true"@endif/>
+                                        <input type="date" class="form-control" name="arrival_date" value="{{ date('Y-m-d',strtotime($query->arrival_date)) }}" required @if(Auth::user()->role == 3) readonly="true"@endif/>
                                     </div>
+
                                 </div>
                             </div>
                             <div class="row">

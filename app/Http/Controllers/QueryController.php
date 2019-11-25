@@ -53,8 +53,6 @@ class QueryController extends Controller
                 ->groupBy('queries.id')
                 ->get();
 
-
-
             if($request->value)
             {
                 $queries = Query::select([
