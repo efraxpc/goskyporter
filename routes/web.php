@@ -49,3 +49,6 @@ Route::post('/logo', 'LogoController@save')->name('logo.save');
 
 Route::get('/queries/filter/{value}', 'QueryController@getIndex')->name('queries.general_search');
 Route::post('/find/query', 'QueryController@find')->name('find_query');
+
+Route::get('/notifications', 'NotificationController@index')->name('notifications');
+Route::post('/notifications/save', 'NotificationController@save')->name('save_notification');

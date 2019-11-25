@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Logo;
+use App\Notification;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -26,6 +27,10 @@ class HomeController extends Controller
     {
         $logo = Logo::find(1);
         $path = asset('storage/images').'/'.$logo->path;
-        return view('pages.home', compact('path'));
+
+
+        $notifications = Notification::all()->take(10);
+
+        return view('pages.home', compact('path','notifications'));
     }
 }

@@ -219,7 +219,18 @@
                             </li>
                         @endif
                     </ul>
+
                 </li>
+                @if (Auth::user()->role == 2)
+                    <li class="nav-item ">
+                        <a class="sidebar-link" href="{{ route('notifications') }}">
+                                <span class="icon-holder">
+                                 <i class="fas fa-exclamation"></i>
+                                </span>
+                            <span class="title">Add notification</span>
+                        </a>
+                    </li>
+                @endif
             </ul>
         </div>
     </div>
@@ -269,6 +280,10 @@
                             @endif
                             @if (Auth::user()->role == 2)
                             <a class='dropdown-item' href="{{ route('logo.index') }}"><i class="fas fa-image"></i> Logo</a>
+                            @endif
+
+                            @if (Auth::user()->role == 2)
+                                <a class='dropdown-item' href="{{ route('notifications') }}"><i class="fas fa-image"></i> Add notification</a>
                             @endif
                         </div>
                     </li>
