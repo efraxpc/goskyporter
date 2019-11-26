@@ -7,7 +7,11 @@
             <h3>Query information</h3>
             <div class="row">
                 <div class="col-12">
-                    Query N° {{$query->id}}
+
+
+                        Query No  @if ($query->id <= 9)0{{$query->id}} @else {{$query->id}} @endif
+
+
                 </div>
             </div>
             <hr>

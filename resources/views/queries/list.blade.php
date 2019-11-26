@@ -141,15 +141,16 @@
                 {
                     "targets": 3,
                     "render": function (data, type, row, meta) {
-                        return '<p class="text-center">'+row.indian_number+'</p>'
+                        return '<p class="text-center">'+row.email+'</p>'
                     }
                 },
                 {
                     "targets": 4,
                     "render": function (data, type, row, meta) {
-                        return '<p class="text-center">'+row.email+'</p>'
+                        return '<p class="text-center">'+row.indian_number+'</p>'
                     }
                 },
+
                 {
                     "targets": 5,
                     "render": function (data, type, row, meta) {
