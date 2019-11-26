@@ -9,7 +9,7 @@
                 <div class="col-12">
 
 
-                        Query No  @if ($query->id <= 9)0{{$query->id}} @else {{$query->id}} @endif
+                        Query No:  @if ($query->id <= 9)0{{$query->id}} @else {{$query->id}} @endif
 
 
                 </div>
