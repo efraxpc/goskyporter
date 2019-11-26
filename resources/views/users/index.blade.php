@@ -24,7 +24,9 @@
                     <td>Name</td>
                     <td>Email</td>
                     <td>Role</td>
-                    <td colspan = 2>Actions</td>
+                    @if (Auth::user()->role == 2)
+                        <td colspan = 2>Actions</td>
+                    @endif
                 </tr>
                 </thead>
                 <tbody>
@@ -41,16 +43,18 @@
                                 Agent
                             @endif
                         </td>
-                        <td>
-                            <a href="{{ route('users.edit',$user->id)}}" class="btn btn-primary">Edit</a>
-                        </td>
-                        <td>
-                            <form action="{{ route('users.destroy', $user->id)}}" method="post">
-                                @csrf
-                                @method('DELETE')
-                                <button class="btn btn-danger" type="submit">Delete</button>
-                            </form>
-                        </td>
+                        @if (Auth::user()->role == 2)
+                            <td>
+                                <a href="{{ route('users.edit',$user->id)}}" class="btn btn-primary">Edit</a>
+                            </td>
+                            <td>
+                                <form action="{{ route('users.destroy', $user->id)}}" method="post">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button class="btn btn-danger" type="submit">Delete</button>
+                                </form>
+                            </td>
+                        @endif
                     </tr>
                 @endforeach
                 </tbody>
