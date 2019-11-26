@@ -290,7 +290,7 @@
                 </ul>
             </div>
             @endif
-            <div class="col-4 offset-8">
+            <div class="col-4 offset-5">
                 <ul class="nav justify-content-end">
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
