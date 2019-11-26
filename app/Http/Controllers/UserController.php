@@ -102,6 +102,10 @@ class UserController extends Controller
         $user = User::find($id);
         $user->name = $request->get('name');
         $user->email = $request->get('email');
+        if($request->password)
+        {
+            $user->password = Hash::make($request->get('password'));
+        }
         $user->save();
 
         return redirect('/users')->with('success', 'User updated!');
