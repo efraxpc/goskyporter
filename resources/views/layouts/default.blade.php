@@ -254,15 +254,16 @@
                                     class="fas fa-list"></i> List Queries</a>
                         </div>
                     </li>
+                </ul>
             </div>
-
+            @if (Auth::user()->role == 2)
             <div class="col-5">
                 <ul class="nav justify-content mobile_menu d-sm-none">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                            aria-haspopup="true" aria-expanded="false">Manage CRM</a>
                         <div class="dropdown-menu">
-                            @if (Auth::user()->role == 2)
+
                             <a class='dropdown-item' href="{{ route('airlines.index') }}"><i class="fas fa-plane"></i>
                                 Airlines</a>
                             <a class='dropdown-item' href="{{ route('airports.index') }}"><i
@@ -281,17 +282,14 @@
                             <a class='dropdown-item' href="{{ route('reports.index') }}"><i
                                     class="fas fa-print"></i> Reports</a>
 
-
                             <a class='dropdown-item' href="{{ route('logo.index') }}"><i class="fas fa-image"></i> Logo</a>
-                            @endif
-                            
-                            @if (Auth::user()->role == 2)
-                                <a class='dropdown-item' href="{{ route('notifications') }}"><i class="fas fa-image"></i> Add notification</a>
-                            @endif
+
+                            <a class='dropdown-item' href="{{ route('notifications') }}"><i class="fas fa-image"></i> Add notification</a>
                         </div>
                     </li>
                 </ul>
             </div>
+            @endif
             <div class="col-4">
                 <ul class="nav justify-content-end">
                     <li class="nav-item dropdown">
