@@ -168,6 +168,7 @@
                         <span class="title">Manage users</span>
                     </a>
                 </li>
+                @if (Auth::user()->role == 2)
                 <li class="nav-item dropdown">
                     <a class="dropdown-toggle click_info_icon" href="javascript:void(0);">
                         <span class="icon-holder">
@@ -207,20 +208,20 @@
                             <a class='sidebar-link' href="{{ route('querystatuses.index') }}"><i
                                     class="fas fa-shield-alt"></i> Query Statuses</a>
                         </li>
-                        @if (Auth::user()->role == 2)
+
                         <li>
                             <a class='sidebar-link' href="{{ route('reports.index') }}"><i
                                     class="fas fa-print"></i> Reports</a>
                         </li>
-                        @endif
-                        @if (Auth::user()->role == 2)
-                            <li>
-                                <a class='sidebar-link' href="{{ route('logo.index') }}"><i class="fas fa-image"></i> Logo</a>
-                            </li>
-                        @endif
+
+                        <li>
+                            <a class='sidebar-link' href="{{ route('logo.index') }}"><i class="fas fa-image"></i> Logo</a>
+                        </li>
+
                     </ul>
 
                 </li>
+                @endif
                 @if (Auth::user()->role == 2)
                     <li class="nav-item ">
                         <a class="sidebar-link" href="{{ route('notifications') }}">
@@ -254,12 +255,14 @@
                         </div>
                     </li>
             </div>
+
             <div class="col-5">
                 <ul class="nav justify-content mobile_menu d-sm-none">
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button"
                            aria-haspopup="true" aria-expanded="false">Manage CRM</a>
                         <div class="dropdown-menu">
+                            @if (Auth::user()->role == 2)
                             <a class='dropdown-item' href="{{ route('airlines.index') }}"><i class="fas fa-plane"></i>
                                 Airlines</a>
                             <a class='dropdown-item' href="{{ route('airports.index') }}"><i
@@ -274,14 +277,14 @@
                                     class="fas fa-bookmark"></i> Booking Types</a>
                             <a class='dropdown-item' href="{{ route('querystatuses.index') }}"><i
                                     class="fas fa-shield-alt"></i> Query Statuses</a>
-                            @if (Auth::user()->role == 2)
+
                             <a class='dropdown-item' href="{{ route('reports.index') }}"><i
                                     class="fas fa-print"></i> Reports</a>
-                            @endif
-                            @if (Auth::user()->role == 2)
+
+
                             <a class='dropdown-item' href="{{ route('logo.index') }}"><i class="fas fa-image"></i> Logo</a>
                             @endif
-
+                            
                             @if (Auth::user()->role == 2)
                                 <a class='dropdown-item' href="{{ route('notifications') }}"><i class="fas fa-image"></i> Add notification</a>
                             @endif

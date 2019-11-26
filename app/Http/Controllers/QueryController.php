@@ -80,6 +80,7 @@ class QueryController extends Controller
                     ->Where('customers.first_name', 'like', '%' . $request->value . '%')
                     ->orWhere('customers.last_name', 'like', '%' . $request->value . '%')
                     ->orWhere('customers.indian_number', 'like', '%' . $request->value . '%')
+                    ->orWhere('customers.email', 'like', '%' . $request->value . '%')
                     ->orWhere('query_statuses.name', 'like', '%' . $request->value . '%')
                     ->orWhere('users.name', 'like', '%' . $request->value . '%')
                     ->orderBy('id')

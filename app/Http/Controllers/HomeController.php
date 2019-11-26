@@ -6,7 +6,7 @@ use App\Logo;
 use App\Notification;
 use App\Query;
 use App\User;
-use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -30,7 +30,7 @@ class HomeController extends Controller
         $logo = Logo::find(1);
         $path = asset('storage/images').'/'.$logo->path;
 
-        $notifications = Notification::all()->take(10);
+        $notifications = DB::table('notifications')->select('content', 'created_at')->limit(10)->orderBy('id', 'desc')->get();
 
         $solds = Query::select([
             'queries.id',

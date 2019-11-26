@@ -19,7 +19,8 @@
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
-                    </div><br />
+                    </div>
+                    <br />
                 @endif
                 <form method="post" action="{{ route('save_query') }}">
                     @csrf
@@ -211,7 +212,6 @@
                                     </div>
                                 </div>
                             </div>
-
                         </div>
                     </div>
                     <hr>
@@ -253,7 +253,6 @@
 
 @section('scripts')
     <script>
-
         $('.query_status').select2();
         $(".query_status").prop("disabled", true);
         $('.booking_source').select2();
@@ -295,4 +294,3 @@
     </script>
 
 @endsection
-
