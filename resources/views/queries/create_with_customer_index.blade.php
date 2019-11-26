@@ -39,7 +39,7 @@
             serverSide: true,
             index: SITEURL + "/queries/data",
             columns: [
-                { data: 'id', name: 'id', "visible": true, "searchable": false },
+                { data: 'customerId', name: 'customerId', "visible": true, "searchable": true },
                 { data: 'first_name', name: 'first_name' },
                 { data: 'indian_number', name: 'indian_number' },
                 { data: 'us_phone_number', name: 'us_phone_number' },

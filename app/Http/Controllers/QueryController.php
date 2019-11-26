@@ -253,7 +253,7 @@ class QueryController extends Controller
     {
         if(request()->ajax()) {
             $customers = Query::select([
-                'customers.id',
+                'customers.id as customerId',
                 'customers.first_name',
                 'customers.last_name',
                 'customers.indian_number',
@@ -263,7 +263,7 @@ class QueryController extends Controller
             ])
                 ->Join('customers','customers.id','=','queries.customer')
                 ->Join('users','users.id','=','queries.user_loggedin')
-                ->orderBy('id')
+                ->orderBy('customers.id')
                 ->groupBy('customers.id')
                 ->get();
             return Datatables::of($customers)
