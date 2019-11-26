@@ -283,7 +283,6 @@
         $('.booking_type').on('select2:select', function (e) {
             var data = e.params.data;
             var slug = slugify(data.text)
-            console.log(slug)
 
             if(slug === 'one-way')
             {
