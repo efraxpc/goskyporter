@@ -278,19 +278,16 @@
                                     class="fas fa-bookmark"></i> Booking Types</a>
                             <a class='dropdown-item' href="{{ route('querystatuses.index') }}"><i
                                     class="fas fa-shield-alt"></i> Query Statuses</a>
-
                             <a class='dropdown-item' href="{{ route('reports.index') }}"><i
                                     class="fas fa-print"></i> Reports</a>
-
                             <a class='dropdown-item' href="{{ route('logo.index') }}"><i class="fas fa-image"></i> Logo</a>
-
                             <a class='dropdown-item' href="{{ route('notifications') }}"><i class="fas fa-image"></i> Add notification</a>
                         </div>
                     </li>
                 </ul>
             </div>
             @endif
-            <div class="col-4 offset-5">
+            <div class="col-4 @if (Auth::user()->role == 2) offset-8 @else offset-5 @endif">
                 <ul class="nav justify-content-end">
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
