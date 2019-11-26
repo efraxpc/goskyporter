@@ -16,7 +16,7 @@
             <table class="responsive nowrap table table-striped" id="queries-table" cellspacing="0" width="100%">
                 <thead>
                 <tr>
-                    <td>ID</td>
+                    <td class="text-center desktop mobile tablet">Customer ID</td>
                     <td class="text-center desktop mobile tablet">Name</td>
                     <td class="text-center desktop mobile tablet">Indian Phone</td>
                     <td class="text-center desktop">American Phone</td>
@@ -39,7 +39,7 @@
             serverSide: true,
             index: SITEURL + "/queries/data",
             columns: [
-                { data: 'id', name: 'id', "visible": false, "searchable": false },
+                { data: 'id', name: 'id', "visible": true, "searchable": false },
                 { data: 'first_name', name: 'first_name' },
                 { data: 'indian_number', name: 'indian_number' },
                 { data: 'us_phone_number', name: 'us_phone_number' },

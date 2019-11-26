@@ -83,6 +83,7 @@ class QueryController extends Controller
                     ->orWhere('customers.email', 'like', '%' . $request->value . '%')
                     ->orWhere('query_statuses.name', 'like', '%' . $request->value . '%')
                     ->orWhere('users.name', 'like', '%' . $request->value . '%')
+                    ->orWhere('queries.id', 'like', '%' . $request->value . '%')
                     ->orderBy('id')
                     ->groupBy('queries.id')
                     ->get();
