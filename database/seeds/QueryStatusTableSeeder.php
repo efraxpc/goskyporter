@@ -16,7 +16,11 @@ class QueryStatusTableSeeder extends Seeder
         ]);
 
         DB::table('query_statuses')->insert([
-            'name' => 'Free',
+            'name' => 'Sold',
+        ]);
+
+        DB::table('query_statuses')->insert([
+            'name' => 'Lost',
         ]);
     }
 }
