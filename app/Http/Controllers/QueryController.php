@@ -154,7 +154,6 @@ class QueryController extends Controller
         'path'
         ));
     }
-
     public function save(Request $request)
     {
         if(!$request->get('customer_id')) {
@@ -172,7 +171,6 @@ class QueryController extends Controller
                 'origin'=>'required',
                 'destination'=>'required',
                 'departure_date'=>'required',
-                'arrival_date'=>'required',
                 'passengerdetails'=>'required',
                 'remarks'=>'required',
                 'bookingsource'=>'required',
@@ -188,7 +186,6 @@ class QueryController extends Controller
                 'origin'=>'required',
                 'destination'=>'required',
                 'departure_date'=>'required',
-                'arrival_date'=>'required',
                 'passengerdetails'=>'required',
                 'remarks'=>'required',
                 'bookingsource'=>'required',
@@ -236,7 +233,6 @@ class QueryController extends Controller
             'origin' => $request->get('origin'),
             'destination' => $request->get('destination'),
             'departure_date' => $request->get('departure_date'),
-            'arrival_date' => $request->get('arrival_date'),
             'passenger_details' => $request->get('passengerdetails'),
             'bookingsource' => $request->get('bookingsource'),
             'visastatus' => $request->get('visa_status'),
@@ -245,10 +241,13 @@ class QueryController extends Controller
             'remarks' => $serialized_object,
             'customer' => $customerId,
         ]);
+
+        if($request->get('arrival_date')){
+            $query->arrival_date = $request->get('arrival_date');
+        }
         $query->save();
         return redirect('queries')->with('success', 'Query saved!');
     }
-
     public function create_with_customer_index()
     {
         if(request()->ajax()) {
@@ -390,6 +389,10 @@ class QueryController extends Controller
 
         $customer = Customer::find($query->customer);
 
+        $bookingTypeToQuery = BookingType::find($query->bookingtype);
+
+        $slugBookingtypeSelected = $bookingTypeToQuery->slug;
+
         $queryId = $id;
         $path = $this->path;
         return view('queries.edit', compact('querystatuses',
@@ -403,6 +406,7 @@ class QueryController extends Controller
             'customer',
             'queryId',
             'remarks',
+            'slugBookingtypeSelected',
         'path'
         ));
     }

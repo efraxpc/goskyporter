@@ -21,6 +21,7 @@
                     @csrf
                     <input type="hidden" name="queryId" value="{{$queryId}}">
                     <input type="hidden" name="customer_id" value="{{$customer->id}}">
+                    <input type="hidden" name="slugBookingtypeSelected" id="slugBookingtypeSelected" value="{{$slugBookingtypeSelected}}">
                     <div class="row">
                         <div class="col-12">
                             <div class="row">
@@ -128,10 +129,10 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="booking_type">Booking type:</label>
-                                        <select class="booking_type" name="booking_type" style="width: 100%" required @if(Auth::user()->role == 3) readonly="true"@endif>
+                                        <select class="booking_type" name="booking_type" id="booking_type"  style="width: 100%" required @if(Auth::user()->role == 3) readonly="true"@endif>
                                             <option value="">-- Select --</option>
                                             @foreach($bookingtypes as $bookingtype_var)
-                                                <option value="{{$bookingtype_var->id}}" @if($query->bookingtype == $bookingtype_var->id) selected @endif >{{$bookingtype_var->name}}</option>
+                                                <option value="{{$bookingtype_var->id}}" @if($query->bookingtype == $bookingtype_var->id) data-slug="{{$bookingtype_var->slug}}" selected @endif >{{$bookingtype_var->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -182,7 +183,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="arrival_date">Arrival date:</label>
-                                        <input type="date" class="form-control" name="arrival_date" value="{{ date('Y-m-d',strtotime($query->arrival_date)) }}" required @if(Auth::user()->role == 3) readonly="true"@endif/>
+                                        <input type="date" class="form-control" name="arrival_date" id="arrival_date" value=@if(!is_null ($query->arrival_date) ) {{ date('Y-m-d',strtotime($query->arrival_date)) }} @endif required />
                                     </div>
 
                                 </div>
@@ -295,6 +296,11 @@
                 $(wrapper).append(fieldHTML); //Add field html
             }
         });
+
+        if($('#slugBookingtypeSelected').val() === 'one-way')
+        {
+            document.getElementById('arrival_date').disabled = true;
+        }
 
         //Once remove button is clicked
         $(wrapper).on('click', '.remove_button', function(e){

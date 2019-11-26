@@ -188,7 +188,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="arrival_date">Arrival date:</label>
-                                        <input type="date" class="form-control" name="arrival_date" value="{{ date('Y-m-d',strtotime($query->arrival_date)) }}"required readonly="true"/>
+                                        <input type="date" class="form-control" name="arrival_date" value=@if(!is_null ($query->arrival_date) ) {{ date('Y-m-d',strtotime($query->arrival_date)) }} @endif required readonly="true"/>
                                     </div>
                                 </div>
                             </div>

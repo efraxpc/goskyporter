@@ -29,7 +29,7 @@ class CreateQueriesTable extends Migration
             $table->integer('airline');
             $table->dateTime('query_date');
             $table->dateTime('departure_date');
-            $table->dateTime('arrival_date');
+            $table->dateTime('arrival_date')->nullable();
             $table->text('passenger_details');
             $table->timestamps();
         });

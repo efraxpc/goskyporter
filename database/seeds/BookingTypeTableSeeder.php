@@ -13,9 +13,15 @@ class BookingTypeTableSeeder extends Seeder
     {
         DB::table('booking_types')->insert([
             'name' => 'One way',
+            'slug' => 'one-way',
         ]);
         DB::table('booking_types')->insert([
-            'name' => 'Return',
+            'name' => 'Round Trip',
+            'slug' => 'round-trip',
+        ]);
+        DB::table('booking_types')->insert([
+            'name' => 'Multicity',
+            'slug' => 'multicity',
         ]);
     }
 }

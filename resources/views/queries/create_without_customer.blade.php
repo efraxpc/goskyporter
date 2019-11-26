@@ -127,7 +127,7 @@
                                         <select class="booking_type" name="booking_type" style="width: 100%" value="{{ old('booking_type') }}"required>
                                             <option value="">-- Select --</option>
                                             @foreach($bookingtypes as $bookingtype)
-                                                <option value="{{$bookingtype->id}}">{{$bookingtype->name}}</option>
+                                                <option value="{{$bookingtype->id}}" data-slug="{{$bookingtype->slug}}">{{$bookingtype->name}}</option>
                                             @endforeach
                                         </select>
                                     </div>
@@ -177,7 +177,7 @@
                                 <div class="col-6">
                                     <div class="form-group">
                                         <label for="arrival_date">Arrival date:</label>
-                                        <input type="date" class="form-control" name="arrival_date" required/>
+                                        <input type="date" class="form-control" name="arrival_date" id="arrival_date" required/>
                                     </div>
                                 </div>
                             </div>
@@ -279,6 +279,36 @@
         });
 
         document.getElementById("query_date").valueAsDate = new Date();
+
+        $('.booking_type').on('select2:select', function (e) {
+            var data = e.params.data;
+            var slug = slugify(data.text)
+            console.log(slug)
+
+            if(slug === 'one-way')
+            {
+                document.getElementById('arrival_date').disabled = true;
+                document.getElementById('arrival_date').required = '';
+                document.getElementById("arrival_date").valueAsDate = null;
+            }else {
+                document.getElementById('arrival_date').disabled = false;
+                document.getElementById('arrival_date').required = 'required';
+            }
+        });
+        function slugify(string) {
+            const a = 'àáâäæãåāăąçćčđďèéêëēėęěğǵḧîïíīįìłḿñńǹňôöòóœøōõőṕŕřßśšşșťțûüùúūǘůűųẃẍÿýžźż·/_,:;'
+            const b = 'aaaaaaaaaacccddeeeeeeeegghiiiiiilmnnnnoooooooooprrsssssttuuuuuuuuuwxyyzzz------'
+            const p = new RegExp(a.split('').join('|'), 'g')
+
+            return string.toString().toLowerCase()
+                .replace(/\s+/g, '-') // Replace spaces with -
+                .replace(p, c => b.charAt(a.indexOf(c))) // Replace special characters
+                .replace(/&/g, '-and-') // Replace & with 'and'
+                .replace(/[^\w\-]+/g, '') // Remove all non-word characters
+                .replace(/\-\-+/g, '-') // Replace multiple - with single -
+                .replace(/^-+/, '') // Trim - from start of text
+                .replace(/-+$/, '') // Trim - from end of text
+        }
     </script>
 
 @endsection
