@@ -268,7 +268,7 @@ class QueryController extends Controller
                 ->get();
             return Datatables::of($customers)
                 ->addColumn('action', function ($customer) {
-                    return '<div class="text-center"><a href="/query/create-with-customer/'.$customer->id.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Choose</a></div>';
+                    return '<div class="text-center"><a href="/query/create-with-customer/'.$customer->customerId.'" class="btn btn-xs btn-primary"><i class="glyphicon glyphicon-edit"></i> Choose</a></div>';
                 })
                 ->make(true);
         }
