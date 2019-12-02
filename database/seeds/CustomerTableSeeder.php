@@ -14,6 +14,7 @@ class CustomerTableSeeder extends Seeder
         DB::table('customers')->insert([
             'first_name' => 'Efrain',
             'last_name' => 'Colmenares',
+            'fullname' => 'Efrain Colmenares',
             'us_phone_number' => '+1 (305) 297-4782',
             'us_alternate_number' => '+1 (305) 297-4780',
             'indian_number' => '07582-221434',

@@ -79,6 +79,7 @@ class QueryController extends Controller
                     ->Join('airports as t2','t2.id','=','queries.destination')
                     ->Where('customers.first_name', 'like', '%' . $request->value . '%')
                     ->orWhere('customers.last_name', 'like', '%' . $request->value . '%')
+                    ->orWhere('customers.fullname', 'like', '%' . $request->value . '%')
                     ->orWhere('customers.indian_number', 'like', '%' . $request->value . '%')
                     ->orWhere('customers.email', 'like', '%' . $request->value . '%')
                     ->orWhere('query_statuses.name', 'like', '%' . $request->value . '%')
@@ -210,6 +211,7 @@ class QueryController extends Controller
             $customer = new Customer([
                 'first_name' => $request->get('first_name'),
                 'last_name' => $request->get('last_name'),
+                'fullname' => $request->get('first_name'). " " .$request->get('last_name'),
                 'us_phone_number' => $request->get('us_phone_number'),
                 'us_alternate_number' => $request->get('us_alternate_phone_number'),
                 'indian_number' => $request->get('indian_phone'),
@@ -221,12 +223,6 @@ class QueryController extends Controller
         }
 
         $query = new Query([
-            'first_name' => $request->get('first_name'),
-            'last_name' => $request->get('last_name'),
-            'us_phone_number' => $request->get('us_phone_number'),
-            'us_alternate_phone_number' => $request->get('us_alternate_phone_number'),
-            'indian_phone' => $request->get('indian_phone'),
-            'email' => $request->get('email'),
             'query_status' => $request->get('query_status'),
             'query_date' => $request->get('query_date'),
             'querytype' => $request->get('query_type'),
@@ -355,6 +351,7 @@ class QueryController extends Controller
         'path'
         ));
     }
+
     public function saveRemark(Request $request)
     {
         $remark = $request->get('remark');
@@ -434,6 +431,7 @@ class QueryController extends Controller
 
         $customer->first_name = $request->get('first_name');
         $customer->last_name = $request->get('last_name');
+        $customer->fullname = $request->get('first_name'). " ". $request->get('last_name');
         $customer->us_phone_number = $request->get('us_phone_number');
         $customer->us_alternate_number = $request->get('us_alternate_phone_number');
         $customer->indian_number = $request->get('indian_phone');
