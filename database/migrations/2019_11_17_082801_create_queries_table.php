@@ -31,6 +31,7 @@ class CreateQueriesTable extends Migration
             $table->dateTime('departure_date');
             $table->dateTime('arrival_date')->nullable();
             $table->text('passenger_details');
+            $table->string('pnr_number');
             $table->timestamps();
         });
     }

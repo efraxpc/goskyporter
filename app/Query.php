@@ -24,5 +24,6 @@ class Query extends Model
         'remarks',
         'customer',
         'user_loggedin',
+        'pnr_number',
     ];
 }

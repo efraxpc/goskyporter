@@ -7,6 +7,11 @@
             <h3>Add new customer</h3>
             <hr>
             <div>
+                @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
                 @if ($errors->any())
                     <div class="alert alert-danger">
                         <ul>
@@ -14,6 +19,7 @@
                                 <li>{{ $error }}</li>
                             @endforeach
                         </ul>
+
                     </div><br />
                 @endif
                 <form method="post" action="{{ route('save_query') }}">
@@ -233,6 +239,17 @@
                                             </div>
                                         </div>
                                     </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="pnr_number">PNR Number:</label>
+                                    <input type="text" class="form-control" value="" name="pnr_number"/>
                                 </div>
                             </div>
                         </div>

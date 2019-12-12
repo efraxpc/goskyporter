@@ -195,6 +195,22 @@ class QueryController extends Controller
                 'airline'=>'required',
             ]);
         }
+
+        $customerByIndianPone = Customer::where('indian_number', $request->get('indian_phone'))->first();
+        $customerByUsPone = Customer::where('us_phone_number', $request->get('us_phone_number'))->first();
+        $customerByEmail = Customer::where('email', $request->get('email'))->first();
+
+        if($customerByIndianPone || $customerByUsPone)
+        {
+            return redirect('query/create-without-customer')->with('error', 'Phone number already exists try with another');
+
+        }else if($customerByEmail)
+        {
+            return redirect('query/create-without-customer')->with('error', 'Email already exists try with another');
+        }
+
+
+
         foreach($request->get('remarks') as $key => $value){
             if($value)
             {
@@ -237,6 +253,7 @@ class QueryController extends Controller
             'user_loggedin' => auth()->user()->id,
             'remarks' => $serialized_object,
             'customer' => $customerId,
+            'pnr_number' => $request->get('pnr_number'),
         ]);
 
         if($request->get('arrival_date')){

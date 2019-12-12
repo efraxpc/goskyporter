@@ -183,6 +183,17 @@
                             </div>
                         </div>
                     </div>
+                    <hr>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="col-6">
+                                <div class="form-group">
+                                    <label for="pnr_number">PNR Number:</label>
+                                    <input type="text" class="form-control" value="" name="pnr_number"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     <button type="submit" class="btn btn-primary">Add</button>
                 </form>
             </div>
